@@ -6,5 +6,8 @@ platforms:
 - facebook
 post_at: 2026-10-29 19:30
 note: Teaser for Saturday's first showcase reel (Palm Crest Villas, concept site). After it's live, add story 2 (poll) by hand in the app.
-status: approved
+status: posted
 telegram_message_id: 245
+posted:
+  instagram: Instagram story (live for 24 h)
+  facebook: Facebook story (live for 24 h)
