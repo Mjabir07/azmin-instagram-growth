@@ -1,0 +1,14 @@
+id: d08-story-poll
+type: story
+image: marketing/posts/d03-d08/d08-story.jpg
+platforms:
+- instagram
+- facebook
+post_at: 2026-10-25 10:00
+note: 'Optional: add a Poll sticker (YES / NOT YET) in the Instagram app.'
+status: posted
+telegram_message_id: 112
+posted:
+  instagram: Instagram story (live for 24 h)
+  facebook: Facebook story (live for 24 h)
+cleaned: '2026-10-30'

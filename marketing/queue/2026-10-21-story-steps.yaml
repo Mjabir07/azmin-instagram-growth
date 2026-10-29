@@ -1,0 +1,13 @@
+id: d04-story-steps
+type: story
+image: marketing/posts/d03-d08/d04-story.jpg
+platforms:
+- instagram
+- facebook
+post_at: 2026-10-21 10:00
+status: posted
+telegram_message_id: 92
+posted:
+  facebook: Facebook story (live for 24 h)
+  instagram: Instagram story (live for 24 h)
+cleaned: '2026-10-30'
