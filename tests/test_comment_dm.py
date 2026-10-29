@@ -188,3 +188,13 @@ def test_reads_keyword_in_replies_under_comments(cfg):
     meta, state = FakeMeta([top]), {"done": {}}
     comment_dm.run(meta, cfg, ACCOUNTS, state, NOW, live=True)
     assert '"comment_id": "c2"' in meta.posts[0][2]["recipient"] and "c3" not in state["done"]
+
+
+def test_demo_keyword_sends_the_demo_site_without_prices(cfg):
+    demo = cfg["keywords"]["DEMO"]
+    assert comment_dm.keyword_link(demo) == "https://work.azmindigital.com"
+    assert comment_dm.match_keyword("DEMO please", cfg["keywords"]) == "DEMO"
+    dm = cfg["dm_text"].format(title=demo["title"], link=comment_dm.keyword_link(demo))
+    assert "https://work.azmindigital.com" in dm
+    for word in ("AED", "price", "website or", "+971"):  # rule 7: no prices or offers in DMs
+        assert word not in dm

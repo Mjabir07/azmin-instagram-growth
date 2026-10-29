@@ -38,6 +38,11 @@ def guide_link(path: str) -> str:
     return f"https://cdn.jsdelivr.net/gh/{REPO}@main/{path}"
 
 
+def keyword_link(k: dict) -> str:
+    """A keyword sends either a web page (`url:`, e.g. the live demos) or a guide PDF from this repo (`guide:`)."""
+    return k.get("url") or guide_link(k["guide"])
+
+
 def match_keyword(text: str, keywords: dict) -> str | None:
     """Keyword whose words appear as a whole word in the comment (case-insensitive), else None."""
     words = set(re.findall(r"[a-z0-9]+", (text or "").lower()))
@@ -139,7 +144,7 @@ def follow_ups(meta: Meta, cfg: dict, accounts: dict, state: dict, now: datetime
         k = cfg["keywords"][w["kw"]]
         try:
             if follows_us(meta, page, uid) is not False:
-                send_dm(meta, ig, page, cfg["dm_text"].format(title=k["title"], link=guide_link(k["guide"])), user_id=uid)
+                send_dm(meta, ig, page, cfg["dm_text"].format(title=k["title"], link=keyword_link(k)), user_id=uid)
                 del waiting[uid]
                 sent.append(w["kw"])
                 continue
@@ -180,7 +185,7 @@ def run(meta: Meta, cfg: dict, accounts: dict, state: dict, now: datetime, live:
         if len(asked) + len(sent) + len(manual) >= cfg.get("max_per_run", 25):
             break  # the rest wait for the next run (not marked done)
         k = cfg["keywords"][kw]
-        dm = cfg["dm_text"].format(title=k["title"], link=guide_link(k["guide"]))
+        dm = cfg["dm_text"].format(title=k["title"], link=keyword_link(k))
         if not live:
             manual.append((c, kw, dm, "dry run"))
             continue
