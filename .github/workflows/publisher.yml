@@ -13,7 +13,12 @@
 name: publisher
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      read_telegram:
+        description: "Also read Telegram taps/clips (leave off until cutover: the ads repo still owns the bot)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -43,6 +48,7 @@ jobs:
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --locked
       - name: Read Telegram (button taps + clips)
+        if: github.event_name != 'workflow_dispatch' || inputs.read_telegram
         run: uv run python -m agent.media.collect --quiet
       - name: Send new drafts for approval
         run: uv run python -m agent.social.approvals

@@ -63,3 +63,11 @@ def test_only_tests_and_inbox_start_on_their_own():
             assert set(on) == {"repository_dispatch"}
             continue
         assert set(on) == {"workflow_dispatch"}, wf.name
+
+
+def test_hand_started_publisher_does_not_read_telegram():
+    """A manual dry run must not take ✅ taps meant for the ads repo, which still owns the bot until cutover."""
+    wf = yaml.safe_load((WORKFLOWS / "publisher.yml").read_text())
+    assert wf[True]["workflow_dispatch"]["inputs"]["read_telegram"]["default"] is False
+    step = next(s for s in wf["jobs"]["publish"]["steps"] if "agent.media.collect" in s.get("run", ""))
+    assert step["if"] == "github.event_name != 'workflow_dispatch' || inputs.read_telegram"
