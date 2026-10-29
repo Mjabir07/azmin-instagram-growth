@@ -52,21 +52,23 @@ def test_no_ads_code_or_ads_steps():
         assert "agent.ads" not in wf.read_text(), wf.name
 
 
-def test_only_tests_and_inbox_start_on_their_own():
-    """Until cutover, Telegram/Meta workflows only run when started by hand, so the two repos never both post.
-    telegram-inbox only runs when the Cloudflare worker dispatches to this repo (step 4)."""
+def test_after_cutover_only_content_workflows_run_on_their_own():
+    """Cutover 29 Oct: publisher (5-min timer + Cloudflare dispatch + queue pushes), cleanup (weekly) and the
+    Telegram inbox start on their own; every other workflow stays manual."""
+    auto = {"tests": None, "telegram-inbox": {"repository_dispatch"},
+            "publisher": {"schedule", "push", "repository_dispatch", "workflow_dispatch"},
+            "cleanup": {"schedule", "workflow_dispatch"}}
     for wf in WORKFLOWS.glob("*.yml"):
-        on = yaml.safe_load(wf.read_text())[True]  # YAML reads the key `on` as True
+        on = yaml.safe_load(wf.read_text())[True]
         if wf.stem == "tests":
             continue
-        if wf.stem == "telegram-inbox":
-            assert set(on) == {"repository_dispatch"}
-            continue
-        assert set(on) == {"workflow_dispatch"}, wf.name
+        assert set(on) == auto.get(wf.stem, {"workflow_dispatch"}), wf.name
+    publisher = yaml.safe_load((WORKFLOWS / "publisher.yml").read_text())[True]
+    assert publisher["repository_dispatch"]["types"] == ["publish"]
 
 
 def test_hand_started_publisher_does_not_read_telegram():
-    """A manual dry run must not take ✅ taps meant for the ads repo, which still owns the bot until cutover."""
+    """A hand-started run only reads Telegram when asked: taps normally arrive through the Cloudflare worker."""
     wf = yaml.safe_load((WORKFLOWS / "publisher.yml").read_text())
     assert wf[True]["workflow_dispatch"]["inputs"]["read_telegram"]["default"] is False
     step = next(s for s in wf["jobs"]["publish"]["steps"] if "agent.media.collect" in s.get("run", ""))

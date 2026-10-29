@@ -4,19 +4,22 @@
 # reports (dry run), and comment -> DM only reports too.
 # Content only: Meta ads (reports, launches) run in Mjabir07/azmin-digital-ads-agent.
 #
-# MIGRATION: the schedule, push and Cloudflare triggers stay off until cutover day, so this repo and the ads repo
-# never both post or read Telegram. Until then it only runs when started by hand (Actions tab -> Run workflow).
-# At cutover add back:
-#   schedule: [{cron: "*/5 * * * *"}]
-#   push: {paths: [marketing/queue/**]}
-#   repository_dispatch: {types: [publish]}
+# Cutover 29 Oct 2026: this repo is the only one that posts and answers comments; the ads repo keeps the ads.
 name: publisher
 
 on:
+  schedule:
+    - cron: "*/5 * * * *"    # GitHub minimum; schedules run on the default branch only
+  push:
+    branches: [main]
+    paths:
+      - marketing/queue/**
+  repository_dispatch:
+    types: [publish]         # every 5 min from the Cloudflare worker's cron (reliable timer)
   workflow_dispatch:
     inputs:
       read_telegram:
-        description: "Also read Telegram taps/clips (leave off until cutover: the ads repo still owns the bot)"
+        description: "Also read Telegram taps/clips (taps normally arrive instantly through the Cloudflare worker)"
         type: boolean
         default: false
 
