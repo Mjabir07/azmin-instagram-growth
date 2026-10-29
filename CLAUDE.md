@@ -63,10 +63,12 @@ The hard rules above always win over any skill.
 - Each cover uses a frame of that day's Yara clip (different outfit/place/expression).
 - Daily Flow clips: `marketing/flow/` (50 free credits/day), sent to the Telegram bot as `D0x-H` / `D0x-E`.
 
-## Strategy (proposal 29 Oct, waiting for Jabir's OK)
-`marketing/content/strategy-nov-2026.md`: audience = UAE small business owners; themes = AI that saves time,
-getting found online, honest opinions; Yara stays (series becomes "AI for your business, with Yara");
-hook rules (frame 1 = viewer's problem, hook done by 1.5 s, 20-35 s); 3 reels + 1 carousel a week.
+## Strategy (v2 proposal 29 Oct, waiting for Jabir's OK)
+`marketing/content/strategy-nov-2026.md`: showcase-led. The 4 scroll-film demo sites (Palm Crest Villas, Aurum Tower,
+Azmin Cars, Azmin Detailing; always labelled "concept", no real brand names or logos) and real client sites (only
+with the client's OK) are the main content, with property and cars as the showcase niches and small-business tips
+for reach. Yara narrates (AI, labelled). CTA = comment DEMO → link to work.azmindigital.com, no prices.
+Hook rules: frame 1 = the best moment of the scroll film, hook done by 1.5 s, 15-35 s, ask for sends.
 Insights: Actions → **insights** (read-only) saves `marketing/insights/<date>.md` for `ig-audit`.
 
 ## Status (29 Oct 2026)
