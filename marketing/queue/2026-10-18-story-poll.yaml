@@ -1,0 +1,14 @@
+id: d01-story-poll
+type: story
+image: marketing/posts/d01-d02/d01-story-poll.jpg
+platforms:
+- instagram
+- facebook
+post_at: 2026-10-18 20:15
+note: 'Day 1 story. Optional: add a Poll sticker (YES/NO) in the Instagram app for more replies.'
+status: posted
+telegram_message_id: 41
+posted:
+  instagram: Instagram story (live for 24 h)
+  facebook: Facebook story (live for 24 h)
+cleaned: '2026-10-30'

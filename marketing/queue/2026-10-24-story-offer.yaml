@@ -1,0 +1,13 @@
+id: d07-story-offer
+type: story
+image: marketing/posts/d03-d08/d07-story.jpg
+platforms:
+- instagram
+- facebook
+post_at: 2026-10-24 10:00
+status: posted
+telegram_message_id: 111
+posted:
+  instagram: Instagram story (live for 24 h)
+  facebook: Facebook story (live for 24 h)
+cleaned: '2026-10-30'
