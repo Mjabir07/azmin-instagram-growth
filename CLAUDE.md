@@ -70,11 +70,12 @@ The hard rules above always win over any skill.
 ## Migration from the ads repo (nothing may post twice)
 1. ✅ Scaffold this repo. Publisher here is content-only and **manual-only**: no schedule, no push trigger,
    no Cloudflare dispatch, cleanup has no schedule, posting switch off (`tests/test_migration.py` guards this).
-2. Jabir adds Secrets here: `META_ACCESS_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`,
-   `TELEGRAM_WEBHOOK_SECRET`, `TELEGRAM_WEBHOOK_URL`; variable `META_GRAPH_API_VERSION`.
-3. Dry run: publisher with posting off; check the Telegram preview flow on a test item.
-4. Telegram: @azmin_digital_bot stays for content; point the Cloudflare worker at this repo (new fine-grained
-   GitHub token + `GH_REPO`). Jabir makes a second bot for the ads repo (no webhook; it polls).
+2. ✅ 29 Oct: Secrets added here (`META_ACCESS_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`,
+   `TELEGRAM_WEBHOOK_SECRET`, `TELEGRAM_WEBHOOK_URL`). Variable `META_GRAPH_API_VERSION` still to add (code defaults to v24.0).
+3. ✅ 29 Oct: dry run with posting off; Telegram preview sent, ✅ tap round trip works; test item removed.
+4. ✅ 29 Oct: Cloudflare worker `GH_REPO` = this repo; its `GH_TOKEN` (fine-grained, Cloudflare Secret) covers both
+   repos until step 6. Until cutover, ✅ taps (incl. "activate ads") land here, so no new ad launch before step 5.
+   Still to do: Jabir makes a second bot for the ads repo (no webhook; it polls).
 5. Cutover on one day, with Jabir's OK: copy the latest `marketing/state/comment-dm.yaml` and queue from the
    ads repo, turn live posting + the triggers on here, and in the ads repo remove only the content steps from
    its publisher (keep the ads scheduler) and switch its Telegram secret to the ads bot.
