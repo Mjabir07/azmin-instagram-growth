@@ -1,0 +1,38 @@
+# Read-only Instagram insights snapshot (agent/social/insights.py) for ig-audit / ig-profile.
+# GET requests only: posts nothing, changes nothing. Saves marketing/insights/<date>.md.
+name: insights
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: telegram-inbox    # same group as the publisher, so their commits never collide
+  cancel-in-progress: false
+
+jobs:
+  insights:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+      - uses: astral-sh/setup-uv@v5
+      - run: uv sync --locked
+      - run: uv run python -m agent.social.insights
+        env:
+          META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+          META_GRAPH_API_VERSION: ${{ vars.META_GRAPH_API_VERSION }}
+      - name: Save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add marketing/insights
+          git diff --cached --quiet && echo "Nothing changed" && exit 0
+          git commit -m "Insights snapshot"
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push
