@@ -86,9 +86,9 @@ Insights: Actions → **insights** (read-only) saves `marketing/insights/<date>.
    `TELEGRAM_WEBHOOK_SECRET`, `TELEGRAM_WEBHOOK_URL`). Variable `META_GRAPH_API_VERSION` still to add (code defaults to v24.0).
 3. ✅ 29 Oct: dry run with posting off; Telegram preview sent, ✅ tap round trip works; test item removed.
 4. ✅ 29 Oct: Cloudflare worker `GH_REPO` = this repo; its `GH_TOKEN` (fine-grained, Cloudflare Secret) covers both
-   repos until step 6. Until cutover, ✅ taps (incl. "activate ads") land here, so no new ad launch before step 5.
-   Still to do: Jabir makes a second bot for the ads repo (no webhook; it polls).
-5. Cutover on one day, with Jabir's OK: copy the latest `marketing/state/comment-dm.yaml` and queue from the
-   ads repo, turn live posting + the triggers on here, and in the ads repo remove only the content steps from
-   its publisher (keep the ads scheduler) and switch its Telegram secret to the ads bot.
+   repos until step 6. Jabir keeps ONE bot (@azmin_digital_bot) for both repos: the ads repo still sends its reports
+   with it, but ✅ taps (incl. "activate ads") land here. Organic only for now, so no ad launches.
+5. ✅ 29 Oct cutover: ads repo publisher no longer runs comment → DM (Mjabir07/azmin-digital-ads-agent#30). Here:
+   posting live (`config/publishing.yaml`), publisher on a 5-min timer + Cloudflare dispatch + queue pushes, weekly
+   cleanup, comment → DM live with the same state file (nobody gets a DM twice).
 6. Clean the ads repo of content folders (separate PR, Jabir's OK).
