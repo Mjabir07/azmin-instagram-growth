@@ -5,7 +5,8 @@
 #   mode: auto  -> the agent sends the fixed DM below as an Instagram private reply (one per comment, Meta's
 #                  rule) and answers the comment publicly. If Meta refuses, it falls back to the Telegram alert.
 # Auto needs the system-user token to have instagram_manage_messages (docs/SETUP-COMMENT-DM.md).
-# Only the fixed text below is ever sent: no AI-written DMs, no prices.
+# Only the fixed text below is ever sent: no AI-written DMs, no prices, no offers (CLAUDE.md rule 7).
+# A keyword sends a guide PDF from this repo (guide:) or a web page (url:).
 mode: auto
 max_per_run: 25          # safety cap so a viral post can't trigger a burst Meta might flag as spam
 lookback_days: 7         # Meta allows private replies up to 7 days after the comment
@@ -18,7 +19,7 @@ lookback_days: 7         # Meta allows private replies up to 7 days after the co
 follow_gate: false
 max_nudges: 2
 gate_text: |-
-  Hi! 👋 Your free guide "{title}" is ready.
+  Hi! 👋 "{title}" is ready for you.
 
   1️⃣ Follow @azmin_digital (a new AI tip every day)
   2️⃣ Reply DONE here and I'll send it straight away 📄
@@ -26,12 +27,12 @@ not_following_text: |-
   I can't see your follow yet 🙂 Please follow @azmin_digital, then reply DONE again and the guide is yours.
 
 dm_text: |-
-  Hi! 👋 Here's your free guide from AI Tools with Yara: {title}
+  Hi! 👋 As promised: {title}
 
-  📄 {link}
+  🔗 {link}
 
-  ➕ Follow @azmin_digital so you don't miss tomorrow's AI tip (a new one every day).
-  Need a website or an AI assistant for your business? Just reply here. – AZMIN DIGITAL
+  ➕ Follow @azmin_digital for a new one every week.
+  What are you working on at the moment? 🙂
 
 public_replies:          # one is picked per comment, only after the first DM was sent
   - "Sent! Check your DMs 📩 (or Message requests)"
@@ -47,3 +48,7 @@ keywords:
     match: [code]
     title: "make reels with code (our exact tools)"
     guide: marketing/guides/reels-with-code.pdf
+  DEMO:
+    match: [demo, demos]
+    title: "our live website demos (open them on your phone and scroll)"
+    url: https://work.azmindigital.com

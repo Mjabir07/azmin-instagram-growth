@@ -122,17 +122,19 @@ Every post: `ig-caption` + `ig-human`, then Telegram ✅. Azmin Detailing waits 
 ## 7. Profile fixes (ig-profile, about 10 minutes, do them first)
 
 Score today: **43/100** (`docs/instagram/profile-score.md`).
-1. **Name field** (pick one): `Azmin | Websites that sell` · `Azmin Digital | Web & AI Dubai` ·
-   `Azmin | Scroll websites Dubai`
+Apply these with Claude in Chrome: `marketing/flow/PROFILE-SETUP-INSTRUCTION.md`.
+1. **Name field:** `Azmin Digital | Websites Dubai` (30 characters, includes the searched words)
 2. **Bio:**
    ```
    Scroll-film websites for property, cars and Dubai brands 🇦🇪
-   Built with AI + code, voiced by Yara (AI)
+   Built with AI + code
    Comment DEMO on any reel to see them live
    ```
+   Yara's AI honesty goes on each reel (Instagram's "Add AI label" + the caption), not in the bio.
 3. **Link:** work.azmindigital.com (the demos: it matches the bio, and it has no prices).
 4. **Category:** Digital creator. Remove "Software Company".
-5. **Archive** (don't delete) the "AED 999 starter combo" post and the older price posts.
+5. **Archive** (don't delete) the 4 posts that show AED 999, and remove the WhatsApp sales lines and
+   #DigitalAgencyDubai from the other captions.
 6. **Pin** the 3 best new posts after week 1: one showcase, one teach, one behind the scenes.
 7. **Highlights** from stories: `Demos` · `Property` · `Cars` · `How it's made` · `About`.
 8. **Follow 20 accounts** from section 8.
