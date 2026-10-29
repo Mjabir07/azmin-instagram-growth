@@ -51,7 +51,7 @@ Jabir is a freelancer and the business is not registered yet. Until it is:
 
 In the UAE, doing paid work for clients normally needs a trade licence or a freelance permit. Please check the
 official options (government and free-zone freelance permits) before taking paid work. This is not legal advice.
-The same care applies to azmindigital.com, which shows prices and services.
+azmindigital.com was checked on 29 Oct: it lists services but no prices.
 
 ## 4. Market check: which audience is best?
 
@@ -131,7 +131,7 @@ Apply these with Claude in Chrome: `marketing/flow/PROFILE-SETUP-INSTRUCTION.md`
    Comment DEMO on any reel to see them live
    ```
    Yara's AI honesty goes on each reel (Instagram's "Add AI label" + the caption), not in the bio.
-3. **Link:** work.azmindigital.com (the demos: it matches the bio, and it has no prices).
+3. **Links:** work.azmindigital.com first (the demos, matches the bio), azmindigital.com second. Neither shows prices.
 4. **Category:** Digital creator. Remove "Software Company".
 5. **Archive** (don't delete) the 4 posts that show AED 999, and remove the WhatsApp sales lines and
    #DigitalAgencyDubai from the other captions.
