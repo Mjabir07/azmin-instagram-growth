@@ -1,4 +1,4 @@
-# Instagram strategy from November 2026 (proposal, 29 Oct)
+# Instagram strategy from November 2026 (v2 proposal, 29 Oct: showcase-led)
 
 Made with the `ig-audit`, `ig-profile` and `ig-plan` skills, from the real numbers in
 `marketing/insights/2026-10-29.md` (read-only snapshot of the last 10 posts).
@@ -53,78 +53,117 @@ In the UAE, doing paid work for clients normally needs a trade licence or a free
 official options (government and free-zone freelance permits) before taking paid work. This is not legal advice.
 The same care applies to azmindigital.com, which shows prices and services.
 
-## 4. The new direction
+## 4. Market check: which audience is best?
 
-**Who it's for:** UAE small business owners (shops, salons, restaurants, clinics, trades) who want more customers
-and less busywork, and are curious about AI.
+| Audience | Market | Fit with what we have | Sales potential | Verdict |
+|---|---|---|---|---|
+| **Property & car brands in Dubai** (developers, brokerages, supercar rental, detailing) | Off-plan is the main driver of Dubai property sales; launch pages need floor plans, payment plans, Arabic + English, mobile first | **Best fit:** 4 scroll-film demo sites built exactly for them | High ticket, few buyers; they buy on proof and trust | **Lead with this (showcase)** |
+| UAE small businesses (shops, salons, cafés) | Huge, but price-driven; many cheap freelancers and DIY builders | Real client sites (MSJ Technical, Pure Precious Jewellery) + AI tips | Low ticket; the AED 999 ad test brought only time-wasters | **Second audience, through tips** |
+| Creators learning AI tools | Biggest reach | The old Yara series | Rarely buy websites from Dubai | **Drop as the main audience** |
 
-**What we're known for (3 themes):**
-1. **AI that saves a business owner time:** WhatsApp replies, review replies, captions, quotes.
-2. **Getting found online:** Google Business Profile, a simple website, WhatsApp Business setup.
-3. **Honest opinions:** what's worth it and what's hype ("My Instagram page is enough", "Do you need an app?").
+**Why showcase wins on Instagram:** Instagram's ranking leans on watch time, and on **sends** (shares by DM) for
+reaching people who don't follow you yet. A satisfying scroll film of a beautiful website is exactly the kind of
+reel people watch to the end and send to a friend ("look at this"). Our four demos are the strongest content we
+own, and none of them has been posted as a showcase yet.
 
-**Yara stays** as the presenter: always labelled as AI, and that suits an AI-tips page. The reel engine, look,
-Telegram ✅ flow and comment → guide DM all stay the same. The series name changes from "AI Tools with Yara" to
-**"AI for your business, with Yara"**. Final call on the old series after the Fri 31 Oct check (section 8).
+**The honest limits:**
+- Developers don't hire a page with 0 followers off one reel. Instagram builds the **proof and reputation**;
+  the sale happens later, by direct conversation, using the page as the portfolio.
+- Until the licence (section 3), we show and teach, and we don't sell. That's fine: the first 6 to 8 weeks are
+  for building proof and an audience anyway.
+- The demos are **concept builds**: always label them that way, and use no real developer or car brand names or
+  logos. That means fixing the BMW badge on Azmin Detailing before it's shown.
+
+## 5. The new direction
+
+**Positioning:** websites that sell for Dubai businesses, shown as beautiful scroll films, built with AI and code.
+Property and cars are the showcase niches; small-business tips bring reach.
+
+**Content mix (4 posts a week):**
+| Pillar | Share | What | Example |
+|---|---|---|---|
+| **Showcase** | 2 a week | one demo or real client site as a scroll film, labelled "concept" or "client (with OK)" | Palm Crest Villas: from the sky into the living room |
+| **Teach** | 1 a week | one thing a property, car or business owner can fix today | "Stop sending buyers a PDF. Send this instead." |
+| **Behind the scenes / opinion** | 1 a week | how a scroll film is built with AI, or a strong opinion | "This website took 3 days, not 3 months. Here's how." |
+
+**Yara stays** as the AI voice (always labelled as AI). She narrates the showcases in one or two lines; the
+website is the star. The old "AI Tools with Yara" episodes stop.
 
 **Hook rules for every reel** (from `ig-reel`):
-- Frame 1 shows the viewer's problem or result in big text, with motion. No logo, no intro, nothing about us.
+- Frame 1 is the most beautiful moment of the scroll film, already moving, with a 3 to 5 word title. No logo,
+  no intro.
 - The spoken hook is done by 1.5 s.
-- 20 to 35 s for now. Shorter reels are easier to finish while the account has no followers.
-- Targets for the next 2 weeks: skip rate under 70%, average watch over 5 s.
+- 15 to 30 s for showcases, 20 to 35 s for teach reels.
+- Ask for the **send**, not the like: "Send this to someone launching a project."
+- Targets for the first 2 weeks: skip rate under 70%, average watch over 6 s, sends on every showcase.
 
-**Cadence:** 4 posts a week (3 reels + 1 carousel), stories most days, and a 20-minute engagement round daily.
-Time: 7:30 PM Dubai on weekdays, 12:30 PM at weekends. The hour matters far less than the first 2 seconds.
+**Call to action** (legally safe): **comment DEMO** and the DM sends the link to the live demos
+(work.azmindigital.com) plus one question about their project (`ig-dm`). No price anywhere.
 
-## 5. First week (Mon 2 to Sun 8 Nov)
+**Cadence:** 4 posts a week, stories most days, and a 20-minute engagement round daily. Time: 7:30 PM Dubai on
+weekdays, 12:30 PM at weekends. The first 2 seconds matter far more than the hour.
 
-| Day | Post | Type | Hook formula | Angle | Comment word |
-|---|---|---|---|---|---|
-| Fri 30 Oct to Sun 1 Nov | profile fixes, stories, engagement round | | | | |
-| Mon 2 Nov | Reel | Teach | #10 If This, Then Watch | "If customers ask you the same 5 questions on WhatsApp every day, this free setup answers them for you" (WhatsApp Business quick replies + greeting message) | REPLY |
-| Tue 3 Nov | stories + engage | | | poll: "How many WhatsApp messages a day do you answer?" | |
-| Wed 4 Nov | Reel | Opinion | #12 The Objection | "'My Instagram page is enough.' Fine. Here's what it can't do for you." (remake of our best-holding post) | GOOGLE |
-| Thu 5 Nov | Carousel | Teach | #11 Numbered With A Favourite | "5 things to fix on your Google Business Profile today. Number 4 is the one nobody does." | GOOGLE |
-| Fri 6 Nov | stories + engage | | | question box: "What's one task you'd love AI to do for your business?" | |
-| Sat 7 Nov 12:30 | Reel | Teach | #5 Time Collapse | "Replying to Google reviews used to take me 30 minutes. Now it takes 2." (the exact AI prompt, on screen) | REVIEW |
-| Sun 8 Nov | stories only | | | | |
+## 6. First two weeks
 
-Each comment word needs a free guide PDF in `config/comment-dm.yaml` before its reel goes out (REPLY, GOOGLE,
-REVIEW), with no prices in them. Every post goes through `ig-caption` + `ig-human`, then Telegram ✅.
+| Day | Post | Pillar | Hook formula | Angle |
+|---|---|---|---|---|
+| Fri 30 Oct to Sun 1 Nov | profile fixes, stories, engagement round | | | |
+| Mon 2 Nov | Reel | Showcase | #24 The Reveal | Palm Crest Villas: "This is an off-plan launch website." The scroll from the sky into the living room. Comment DEMO |
+| Wed 4 Nov | Reel | Teach | #2 Negative Command | "Stop sending buyers a launch PDF. They decide on their phone." 3 things the page must show: floor plan, payment plan, Arabic |
+| Thu 5 Nov | Carousel | Showcase | #13 Before And After | Real client site, before and after (only with the client's OK; else 6 frames of Aurum Tower) |
+| Sat 7 Nov | Reel | Showcase | #18 Cold Open Demo | Azmin Cars: the fleet scroll, then "book on WhatsApp in under a minute" |
+| Mon 9 Nov | Reel | Behind the scenes | #5 Time Collapse | "A launch website used to take months. This one took days." How the scroll film is made |
+| Wed 11 Nov | Reel | Showcase | #26 The Superlative | Aurum Tower: "Pick a floor, see the view." |
+| Thu 12 Nov | Carousel | Teach | #11 Numbered With A Favourite | "5 things a car rental website needs. Number 3 is the one that gets bookings." |
+| Sat 14 Nov | Reel | Opinion | #12 The Objection | "'My Instagram page is enough.' Fine. Here's what it can't do." (remake of our best-holding post) |
 
-## 6. Profile fixes (ig-profile, do these first, about 10 minutes)
+Every post: `ig-caption` + `ig-human`, then Telegram ✅. Azmin Detailing waits until the BMW badge is removed.
+
+## 7. Profile fixes (ig-profile, about 10 minutes, do them first)
 
 Score today: **43/100** (`docs/instagram/profile-score.md`).
-
-1. **Name field** (pick one): `Azmin Digital | AI tips UAE` · `Azmin | AI for small business` ·
-   `Azmin Digital | AI & business`
+1. **Name field** (pick one): `Azmin | Websites that sell` · `Azmin Digital | Web & AI Dubai` ·
+   `Azmin | Scroll websites Dubai`
 2. **Bio:**
    ```
-   Simple AI and online tips for UAE small businesses 🇦🇪
-   Presented by Yara, our AI host
-   Comment the word on any reel for the free guide
+   Scroll-film websites for property, cars and Dubai brands 🇦🇪
+   Built with AI + code, voiced by Yara (AI)
+   Comment DEMO on any reel to see them live
    ```
-3. **Category:** Digital creator. Remove "Software Company".
-4. **Archive** (don't delete) the "AED 999 starter combo" post.
-5. **Pin** "My Instagram page is enough" now. Pin the best two new reels after week 1.
-6. **Highlights** from stories as they happen: `Free guides` · `AI tips` · `Google` · `About Yara`.
-7. **Follow 10 to 20 accounts** (section 7). An account that follows nobody looks like a bot.
+3. **Link:** work.azmindigital.com (the demos: it matches the bio, and it has no prices).
+4. **Category:** Digital creator. Remove "Software Company".
+5. **Archive** (don't delete) the "AED 999 starter combo" post and the older price posts.
+6. **Pin** the 3 best new posts after week 1: one showcase, one teach, one behind the scenes.
+7. **Highlights** from stories: `Demos` · `Property` · `Cars` · `How it's made` · `About`.
+8. **Follow 20 accounts** from section 8.
 
-Expected after the fixes: about 65/100. The rest comes from posting, stories and replies, not rewrites.
+Expected after the fixes: about 65/100. The rest comes from posting, stories and replies.
 
-## 7. Daily engagement round (20 minutes, before posting)
+## 8. Getting followers and, later, sales
 
-Jabir picks the accounts himself; the `ig-comment` skill drafts the comments. Never pitch in a comment.
-- **5 reach:** big UAE business, startup and SME pages and Dubai business news pages, where a good early
-  comment is seen by thousands.
-- **3 peers:** UAE creators of a similar size posting about AI, marketing or small business.
-- **2 buyers:** local businesses you'd love as clients one day (cafés, salons, clinics). Comment for weeks, no DMs.
+1. **Engagement round** (20 minutes daily, before posting; `ig-comment` drafts, Jabir picks the accounts):
+   5 reach (big Dubai property, car and business pages), 3 peers (UAE web designers and creators), 2 buyers
+   (developers' marketing teams, brokerages, rental companies). Comment for weeks before any DM. Never pitch.
+2. **Collab posts:** ask the real clients to be co-authors on their showcase reel (Instagram "Collab"), so it shows
+   to their followers too. Only with their OK.
+3. **Ask for sends** on every showcase ("Send this to someone launching a project").
+4. **Stories most days:** a frame from the next reel, a poll ("PDF or website for a launch?"), a "how it's made" clip.
+5. **After the licence:** turn DEMO conversations into calls (`ig-dm`), then a pitch with the live demo link.
+   Ads come back only then, with proof-led creatives (a showcase reel), never a price.
 
-## 8. How we measure
+## 9. How we measure
 
 - Every Monday: run the **insights** workflow (Actions → insights → Run). It saves
   `marketing/insights/<date>.md`, and `ig-audit` reads it.
-- Watch, in this order: skip rate → average watch → sends per reach → follows per reach → followers.
-- **Fri 31 Oct:** Ep 2 reaches 72 hours. Send screenshots of Ep 1 and Ep 2 Insights from the app (the
-  retention graph and "hold at 3 s" aren't in the API). That closes the old series audit.
-- Check-in after 2 weeks (Mon 16 Nov): keep, change or drop each theme based on the numbers.
+- Watch, in this order: skip rate → average watch → sends per reach → follows per reach → followers →
+  DEMO comments.
+- **Fri 31 Oct:** send screenshots of the Ep 1 and Ep 2 Insights from the app (the 3-second hold isn't in the API).
+- Check-in after 2 weeks (Mon 16 Nov): compare showcase vs teach vs behind the scenes, and keep what works.
+
+## Sources (market check, 29 Oct)
+- Instagram ranking signals (watch time, likes and sends per reach, sends for non-followers):
+  [Buffer](https://buffer.com/library/instagram-algorithm/), [eClincher](https://www.eclincher.com/articles/how-the-instagram-algorithm-works-in-2026)
+- Dubai off-plan and launch-page needs: [Dubizzle](https://www.dubizzle.com/blog/property/real-estate-marketing-tips-off-plan-properties-dubai/),
+  [The Impulse Digital](https://www.theimpulsedigital.com/ae/blog/?p=11878), [Driven Properties](https://www.drivenproperties.com/blog/real-estate-trends)
+- UAE freelance permits: [Khaleej Times](https://www.khaleejtimes.com/life-and-living/visa-and-immigration-in-uae/freelance-visa-in-uae-explained-types-cost-eligibility?amp=1),
+  [Middle East Briefing](https://www.middleeastbriefing.com/news/uae-freelance-licence-visa-costs-requirements-2026/)
