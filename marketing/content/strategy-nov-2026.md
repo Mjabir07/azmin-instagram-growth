@@ -117,6 +117,31 @@ weekdays, 12:30 PM at weekends. The first 2 seconds matter far more than the hou
 | Thu 12 Nov | Carousel | Teach | #11 Numbered With A Favourite | "5 things a car rental website needs. Number 3 is the one that gets bookings." |
 | Sat 14 Nov | Reel | Opinion | #12 The Objection | "'My Instagram page is enough.' Fine. Here's what it can't do." (remake of our best-holding post) |
 
+**Weeks 3 and 4** (adjusted after the Mon 16 Nov numbers check):
+
+| Day | Post | Pillar | Hook formula | Angle |
+|---|---|---|---|---|
+| Mon 16 Nov | Reel | Showcase | #13 Before And After | Azmin Detailing (only after the BMW badge is removed): "Show the finish before they book" |
+| Wed 18 Nov | Reel | Teach | #7 Wrong Way, Right Way | "Your property listing is built for desktop. Your buyers are on their phone." |
+| Thu 19 Nov | Carousel | Behind the scenes | #9 The Steal | "Steal our launch-page checklist" (8 slides, saveable). Comment CHECKLIST for the PDF |
+| Sat 21 Nov | Reel | Showcase | #18 Cold Open Demo | Palm Crest, part 2: the payment-plan calculator in action |
+| Mon 23 Nov | Reel | Opinion | #20 Permission | "You don't need an app. You need a website that loads in 2 seconds." |
+| Wed 25 Nov | Reel | Showcase | #24 The Reveal | Real client site (with OK) or Aurum Tower: the floor picker |
+| Thu 26 Nov | Carousel | Teach | #11 Numbered With A Favourite | "6 things buyers check on a launch page in 10 seconds" |
+| Sat 28 Nov | Reel | Behind the scenes | #15 The Flop Record | "Our first 10 reels got 3 views each. Here's what we changed." (honest numbers from the insights) |
+
+**Stories every week (they're where conversations start):**
+- Mon: a poll ("PDF or website for a launch?")
+- Wed: a 10-second sneak peek of the next showcase
+- Fri: a question box ("Ask me anything about your website")
+- Sun: a "comment DEMO" reminder with the newest reel
+
+Answer the question-box replies in DMs with the conversation script in the `azmin-ig-ops` skill.
+
+**Sales bridge (no selling in public until registered):** every DEMO comment and every question-box reply is a
+conversation. Jabir answers as a person, asks about their project, and keeps a private list (outside this repo). The
+week the business is registered, those people hear first. That list is the sales pipeline.
+
 Every post: `ig-caption` + `ig-human`, then Telegram ✅. Azmin Detailing waits until the BMW badge is removed.
 
 ## 7. Profile fixes (ig-profile, about 10 minutes, do them first)
