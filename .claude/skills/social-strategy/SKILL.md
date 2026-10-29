@@ -5,6 +5,10 @@ description: AZMIN DIGITAL Instagram + Facebook growth strategy — content pill
 
 # Social growth strategy (Instagram first, Facebook mirrors it)
 
+> **Superseded on 29 Oct 2026** for day-to-day Instagram work by the `azmin-ig-ops` skill and
+> `marketing/content/strategy-nov-2026.md` (showcase-led, organic only, no prices: CLAUDE.md rule 7).
+> Keep this file for the brand voice and formats. Where it disagrees, the newer files win.
+
 Load `azmin-brand` (claims, voice, never-list) and `trend-scout` (trend ideas) alongside this.
 Current plan: `marketing/content/30-day-plan.md` (day 1 = Sun 18 Oct 2026).
 **From Mon 2 Nov 2026 the goal is reach first** (approved by Jabir 26 Oct): a daily reel series "AI Tools with Yara"

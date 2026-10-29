@@ -52,7 +52,8 @@ Jabir's `ig-*` skills (ig-plan, ig-reel, ig-caption, ig-carousel, ig-story, ig-d
 ig-profile, ig-human, ig-comment, ig-repurpose) are on his Claude account: use them. Run `ig-human` on any
 caption, script, reply or DM before showing it. Repo skills in `.claude/skills/` (remotion-best-practices,
 playwright-recording, ffmpeg, social, find-skills, text-to-speech, azmin-brand, social-strategy, trend-scout).
-The hard rules above always win over any skill.
+**Day-to-day operator: `.claude/skills/azmin-ig-ops`** ("today", "engage", "write the next reel",
+"check the numbers"; Meta rules in its `references/meta-rules.md`). The hard rules above always win over any skill.
 
 ## "AI Tools with Yara" series rules (for when it continues)
 - English, Yara presents. Daily reel **7:30 PM Dubai** (Sat/Sun 12:30 PM). Normal speed: voice 1.1, ~40–47 s.
