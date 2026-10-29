@@ -72,8 +72,8 @@ The hard rules above always win over any skill.
    no Cloudflare dispatch, cleanup has no schedule, posting switch off (`tests/test_migration.py` guards this).
 2. Jabir adds Secrets here: `META_ACCESS_TOKEN`, `TELEGRAM_BOT_TOKEN`, `TELEGRAM_CHAT_ID`,
    `TELEGRAM_WEBHOOK_SECRET`, `TELEGRAM_WEBHOOK_URL`; variable `META_GRAPH_API_VERSION`.
-3. Dry run: publisher with posting off; check the Telegram preview flow on a test item.
-4. Telegram: @azmin_digital_bot stays for content; point the Cloudflare worker at this repo (new fine-grained
+3. ✅ Dry run done 29 Oct (posting off; preview sent, ✅ tap round trip works; test item removed).
+4. ✅ 29 Oct: worker GH_REPO now points here (token also has access to this repo). Was: @azmin_digital_bot stays for content; point the Cloudflare worker at this repo (new fine-grained
    GitHub token + `GH_REPO`). Jabir makes a second bot for the ads repo (no webhook; it polls).
 5. Cutover on one day, with Jabir's OK: copy the latest `marketing/state/comment-dm.yaml` and queue from the
    ads repo, turn live posting + the triggers on here, and in the ads repo remove only the content steps from
