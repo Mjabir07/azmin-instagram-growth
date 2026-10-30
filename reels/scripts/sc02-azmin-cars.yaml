@@ -1,0 +1,17 @@
+# Showcase 02 (Mon 2 Nov 19:30): Azmin Cars, a concept supercar rental site. Keyword DEMO. ~18 s, voice 1.1.
+# No prices and no real car brands (the demo's fleet list, booking form and AED lines are left out).
+id: sc02-azmin-cars
+voice: af_heart
+speed: 1.1
+lines:
+  - id: hook
+    text: This is a supercar rental website. Just scroll.
+  - id: fly
+    text: Scrolling walks you all the way around the car.
+  - id: plan
+    text: Tap a colour, and the car changes right in front of you.
+  - id: arabic
+    text: Then booking takes three simple steps.
+  - id: end
+    text: It's a concept we built. Comment DEMO and I'll send you the live link.
+    say: It's a concept we built. Comment demo, and I'll send you the live link.
