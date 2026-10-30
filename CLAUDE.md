@@ -77,6 +77,9 @@ Insights: Actions → **insights** (read-only) saves `marketing/insights/<date>.
   shares or follows; Ep 1 12 views, only test comments). Don't make Ep 3.
 - New showcase series: SC01 Palm Crest Villas (`reels/src/ShowcaseReel.tsx`, composition `ShowcasePalmCrest`,
   footage recorded from work.azmindigital.com with the demo's price lines hidden) posts Sat 31 Oct 12:30 after ✅.
+- SC02 Azmin Cars (composition `ShowcaseAzminCars`, same template `makeShowcase` in `reels/src/ShowcaseReel.tsx`) posts
+  Mon 2 Nov 19:30 after ✅. The live cars demo shows real car brands + daily prices in its fleet list and booking form:
+  never show those sections (hide them before recording, as the SC02 capture does).
 - Azmin Detailing demo is being re-edited by Jabir (BMW badge): keep it out of the plan until he says it's ready.
 
 ## Migration from the ads repo (nothing may post twice)
