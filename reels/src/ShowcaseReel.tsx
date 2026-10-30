@@ -22,6 +22,7 @@ export type ShowcaseConfig = {
   kicker: string;                   // end card, e.g. "PALM CREST VILLAS · CONCEPT SITE"
   poster: string;                   // end card phone image
   endLen?: number;
+  hookShade?: boolean;              // dark fade behind the hook title when the site has its own headline up top
 };
 const f = (s: number) => Math.round(s * 30);
 
@@ -58,12 +59,14 @@ const Caption: React.FC<{ cfg: ShowcaseConfig }> = ({ cfg }) => {
 };
 
 /** Frame 1 hook: big title that is already on screen at frame 0 (no fade-in from nothing). */
-const Hook: React.FC<{ title: [string, string] }> = ({ title }) => {
+const Hook: React.FC<{ title: [string, string]; shade?: boolean }> = ({ title, shade }) => {
   const fr = useCurrentFrame();
   const out = interpolate(fr, [70, 84], [1, 0], clamp);
   const pop = interpolate(fr, [0, 10], [0.94, 1], { ...clamp, easing: smooth });
   const arrow = Math.sin(fr / 5) * 12;
   return (
+    <>
+    {shade && <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 900, opacity: out, background: "linear-gradient(180deg, rgba(5,10,22,.96) 0%, rgba(5,10,22,.9) 55%, rgba(5,10,22,0) 100%)" }} />}
     <div style={{ position: "absolute", left: 60, right: 60, top: 190, opacity: out, transform: `scale(${pop})`, transformOrigin: "50% 0" }}>
       <div style={{ display: "inline-block", background: C.blue, color: "#fff", font: "700 34px Inter Tight", letterSpacing: 3, padding: "12px 26px", borderRadius: 99 }}>CONCEPT BUILD</div>
       <div style={{ font: "800 112px/1.0 Inter Tight", letterSpacing: -4, color: PAPER, marginTop: 26, textShadow: "0 8px 40px rgba(0,0,0,.45)" }}>
@@ -71,6 +74,7 @@ const Hook: React.FC<{ title: [string, string] }> = ({ title }) => {
       </div>
       <div style={{ font: "700 46px Inter Tight", color: PAPER, marginTop: 28, transform: `translateY(${arrow}px)`, textShadow: "0 6px 30px rgba(0,0,0,.5)" }}>↓ just scroll</div>
     </div>
+    </>
   );
 };
 
@@ -141,7 +145,7 @@ export const makeShowcase = (cfg: ShowcaseConfig) => {
         </Sequence>
       ))}
       <Sequence from={endFrom} durationInFrames={total - endFrom}><EndCard kicker={cfg.kicker} poster={cfg.poster} /></Sequence>
-      <Sequence from={0} durationInFrames={90}><Hook title={cfg.title} /></Sequence>
+      <Sequence from={0} durationInFrames={90}><Hook title={cfg.title} shade={cfg.hookShade} /></Sequence>
       <Caption cfg={cfg} />
     </AbsoluteFill>
   );
@@ -174,4 +178,5 @@ export const AzminCars = makeShowcase({
   title: ["This is a", "rental website."],
   kicker: "AZMIN CARS · CONCEPT SITE",
   poster: "sc02/first.jpg",
+  hookShade: true,
 });
