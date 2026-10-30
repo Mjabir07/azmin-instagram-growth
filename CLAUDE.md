@@ -72,12 +72,12 @@ for reach. Yara narrates (AI, labelled). CTA = comment DEMO → link to work.azm
 Hook rules: frame 1 = the best moment of the scroll film, hook done by 1.5 s, 15-35 s, ask for sends.
 Insights: Actions → **insights** (read-only) saves `marketing/insights/<date>.md` for `ig-audit`.
 
-## Status (29 Oct 2026)
-- Ep 1 (SKILL, 26 Oct) and Ep 2 (CODE, 27 Oct) are posted. **The series is PAUSED: don't make Ep 3.**
-- **Fri 31 Oct** (Ep 2 has 72 h of data): run `ig-audit` on Ep 1 + Ep 2 (reach, 3-second hold, watch time, saves,
-  shares, keyword comments, follows, followers vs non-followers) and `ig-profile` on @azmin_digital, then
-  recommend: continue, change or replace the series. Until then only light posts/stories (`ig-plan`, `ig-story`)
-  if Jabir wants.
+## Status (30 Oct 2026)
+- Old series "AI Tools with Yara" is **replaced** (audit 30 Oct: Ep 2 111 views, 100% non-followers, 0 likes, saves,
+  shares or follows; Ep 1 12 views, only test comments). Don't make Ep 3.
+- New showcase series: SC01 Palm Crest Villas (`reels/src/ShowcaseReel.tsx`, composition `ShowcasePalmCrest`,
+  footage recorded from work.azmindigital.com with the demo's price lines hidden) posts Sat 31 Oct 12:30 after ✅.
+- Azmin Detailing demo is being re-edited by Jabir (BMW badge): keep it out of the plan until he says it's ready.
 
 ## Migration from the ads repo (nothing may post twice)
 1. ✅ Scaffold this repo. Publisher here is content-only and **manual-only**: no schedule, no push trigger,

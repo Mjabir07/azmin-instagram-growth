@@ -1,0 +1,17 @@
+# Showcase 01 (Sat 31 Oct 12:30): Palm Crest Villas, a concept launch site. Keyword DEMO. ~20 s, voice 1.1.
+# Strategy: marketing/content/strategy-nov-2026.md (showcase-led). No prices (villa prices on the demo are left out).
+id: sc01-palm-crest
+voice: af_heart
+speed: 1.1
+lines:
+  - id: hook
+    text: This is a villa launch website. Just scroll.
+  - id: fly
+    text: From the sky, down into the community, right into the living room.
+  - id: plan
+    text: The floor plan opens room by room.
+  - id: arabic
+    text: And buyers read every word in English or Arabic, on their phone.
+  - id: end
+    text: It's a concept we built. Comment DEMO and I'll send you the live link.
+    say: It's a concept we built. Comment demo, and I'll send you the live link.
