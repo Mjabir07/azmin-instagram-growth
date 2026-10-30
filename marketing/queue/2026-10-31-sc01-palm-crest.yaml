@@ -6,16 +6,21 @@ platforms:
 - instagram
 - facebook
 post_at: 2026-10-31 12:30
-note: "Showcase 01 (concept site, no prices). After it's live: reply to every comment in the first hour. If the app offers it, add the AI label (Yara's voice is AI)."
-caption: |-
-  This is what an off-plan launch page can feel like on a phone.
+note: 'Showcase 01 (concept site, no prices). After it''s live: reply to every comment in the first hour. If the app offers it, add the AI label (Yara''s voice is AI).'
+caption: 'This is what an off-plan launch page can feel like on a phone.
+
 
   Palm Crest Villas is a concept site we built: a scroll film from the sky into the living room, a floor plan that opens room by room, and every word in English or Arabic.
 
-  Comment DEMO and we'll send you the live link.
+
+  Comment DEMO and we''ll send you the live link.
+
   Know someone launching a project? Send this to them.
+
 
   Voice: Yara, our AI presenter.
 
-  #DubaiRealEstate #OffPlanDubai #RealEstateMarketing #WebDesignDubai
-status: draft
+
+  #DubaiRealEstate #OffPlanDubai #RealEstateMarketing #WebDesignDubai'
+status: pending
+telegram_message_id: 248
