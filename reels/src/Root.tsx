@@ -12,6 +12,7 @@ import { type EpisodeProps } from "./YaraEpisode";
 import { Ep01 } from "./episodes/Ep01";
 import { Ep02 } from "./episodes/Ep02";
 import { YaraThumb, type ThumbProps } from "./YaraThumb";
+import { ShowcaseReel, SHOWCASE_FRAMES } from "./ShowcaseReel";
 
 export const Root: React.FC = () => (
   <>
@@ -32,6 +33,7 @@ export const Root: React.FC = () => (
     ))}
     <Still id="YaraThumb" component={YaraThumb} width={1080} height={1920}
       defaultProps={{ ep: 1, kicker: "CLAUDE SKILLS", title: "Teach Claude new skills in seconds", accent: "new skills", image: "yara.jpg" } as ThumbProps} />
+    <Composition id="ShowcasePalmCrest" component={ShowcaseReel} durationInFrames={SHOWCASE_FRAMES} fps={30} width={1080} height={1920} />
     <Composition id="ExplainerReel" component={ExplainerReel} durationInFrames={EXPLAINER_REEL_FRAMES} fps={30} width={1080} height={1920} />
   </>
 );
