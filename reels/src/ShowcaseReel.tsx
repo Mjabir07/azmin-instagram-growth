@@ -4,6 +4,7 @@ import { C } from "./brand";
 import { PAPER, clamp, sfx, smooth } from "./YaraEpisode";
 import pal from "./data/sc01-palm-crest.json";
 import cars from "./data/sc02-azmin-cars.json";
+import nopdf from "./data/sc03-no-pdf.json";
 
 /**
  * Showcase reels: a concept demo site recorded as a real scroll on a phone (frame-by-frame, prices hidden before
@@ -13,7 +14,7 @@ import cars from "./data/sc02-azmin-cars.json";
 
 type Word = { word: string; start: number; end: number };
 type Line = { id: string; text: string; src: string; duration: number; words: Word[] };
-type Clip = { src: string; len: number; freezeAfter?: number; chip?: string };
+type Clip = { src?: string; node?: React.FC<{ len: number }>; len: number; startFrom?: number; freezeAfter?: number; chip?: string };
 export type ShowcaseConfig = {
   data: { lines: Line[] };
   clips: Clip[];                    // played back to back from frame 0
@@ -22,7 +23,9 @@ export type ShowcaseConfig = {
   kicker: string;                   // end card, e.g. "PALM CREST VILLAS · CONCEPT SITE"
   poster: string;                   // end card phone image
   endLen?: number;
-  hookShade?: boolean;              // dark fade behind the hook title when the site has its own headline up top
+  hookShade?: boolean;
+  hookTag?: string;                 // chip above the hook title (default "CONCEPT BUILD")
+  hookSub?: string | null;          // line under the title (default "↓ just scroll"; null hides it)              // dark fade behind the hook title when the site has its own headline up top
 };
 const f = (s: number) => Math.round(s * 30);
 
@@ -59,7 +62,7 @@ const Caption: React.FC<{ cfg: ShowcaseConfig }> = ({ cfg }) => {
 };
 
 /** Frame 1 hook: big title that is already on screen at frame 0 (no fade-in from nothing). */
-const Hook: React.FC<{ title: [string, string]; shade?: boolean }> = ({ title, shade }) => {
+const Hook: React.FC<{ title: [string, string]; shade?: boolean; tag?: string; sub?: string | null }> = ({ title, shade, tag = "CONCEPT BUILD", sub = "↓ just scroll" }) => {
   const fr = useCurrentFrame();
   const out = interpolate(fr, [70, 84], [1, 0], clamp);
   const pop = interpolate(fr, [0, 10], [0.94, 1], { ...clamp, easing: smooth });
@@ -68,11 +71,11 @@ const Hook: React.FC<{ title: [string, string]; shade?: boolean }> = ({ title, s
     <>
     {shade && <div style={{ position: "absolute", left: 0, right: 0, top: 0, height: 900, opacity: out, background: "linear-gradient(180deg, rgba(5,10,22,.96) 0%, rgba(5,10,22,.9) 55%, rgba(5,10,22,0) 100%)" }} />}
     <div style={{ position: "absolute", left: 60, right: 60, top: 190, opacity: out, transform: `scale(${pop})`, transformOrigin: "50% 0" }}>
-      <div style={{ display: "inline-block", background: C.blue, color: "#fff", font: "700 34px Inter Tight", letterSpacing: 3, padding: "12px 26px", borderRadius: 99 }}>CONCEPT BUILD</div>
+      <div style={{ display: "inline-block", background: C.blue, color: "#fff", font: "700 34px Inter Tight", letterSpacing: 3, padding: "12px 26px", borderRadius: 99 }}>{tag}</div>
       <div style={{ font: "800 112px/1.0 Inter Tight", letterSpacing: -4, color: PAPER, marginTop: 26, textShadow: "0 8px 40px rgba(0,0,0,.45)" }}>
         {title[0]}<br /><span style={{ font: "400 132px/1 Serif", fontStyle: "italic", letterSpacing: -1, color: C.cyan }}>{title[1]}</span>
       </div>
-      <div style={{ font: "700 46px Inter Tight", color: PAPER, marginTop: 28, transform: `translateY(${arrow}px)`, textShadow: "0 6px 30px rgba(0,0,0,.5)" }}>↓ just scroll</div>
+      {sub && <div style={{ font: "700 46px Inter Tight", color: PAPER, marginTop: 28, transform: `translateY(${arrow}px)`, textShadow: "0 6px 30px rgba(0,0,0,.5)" }}>{sub}</div>}
     </div>
     </>
   );
@@ -89,14 +92,14 @@ const Chip: React.FC<{ text: string; top?: number }> = ({ text, top = 470 }) => 
   );
 };
 
-const Footage: React.FC<{ src: string; len: number; freezeAfter?: number }> = ({ src, len, freezeAfter }) => {
+const Footage: React.FC<{ src: string; len: number; startFrom?: number; freezeAfter?: number }> = ({ src, len, startFrom = 0, freezeAfter }) => {
   const fr = useCurrentFrame();
   const o = interpolate(fr, [len - 6, len], [1, 0.85], clamp);
   return (
     <AbsoluteFill style={{ opacity: o }}>
       {freezeAfter !== undefined && fr >= freezeAfter
-        ? <OffthreadVideo src={staticFile(src)} startFrom={freezeAfter - 1} endAt={freezeAfter} muted />
-        : <OffthreadVideo src={staticFile(src)} muted />}
+        ? <OffthreadVideo src={staticFile(src)} startFrom={startFrom + freezeAfter - 1} endAt={startFrom + freezeAfter} muted />
+        : <OffthreadVideo src={staticFile(src)} startFrom={startFrom} muted />}
     </AbsoluteFill>
   );
 };
@@ -140,12 +143,13 @@ export const makeShowcase = (cfg: ShowcaseConfig) => {
       {starts.slice(1).map((st, i) => sfx(i % 2 ? "swoosh.wav" : "whoosh.wav", st - 3, 0.35, 20))}
       {sfx("sparkle.wav", endFrom + 10, 0.4)}
       {cfg.clips.map((c, i) => (
-        <Sequence key={c.src} from={starts[i]} durationInFrames={c.len}>
-          <Footage src={c.src} len={c.len} freezeAfter={c.freezeAfter} />{c.chip && <Chip text={c.chip} />}
+        <Sequence key={i} from={starts[i]} durationInFrames={c.len}>
+          {c.node ? <c.node len={c.len} /> : <Footage src={c.src!} len={c.len} startFrom={c.startFrom} freezeAfter={c.freezeAfter} />}
+          {c.chip && <Chip text={c.chip} />}
         </Sequence>
       ))}
       <Sequence from={endFrom} durationInFrames={total - endFrom}><EndCard kicker={cfg.kicker} poster={cfg.poster} /></Sequence>
-      <Sequence from={0} durationInFrames={90}><Hook title={cfg.title} shade={cfg.hookShade} /></Sequence>
+      <Sequence from={0} durationInFrames={90}><Hook title={cfg.title} shade={cfg.hookShade} tag={cfg.hookTag} sub={cfg.hookSub} /></Sequence>
       <Caption cfg={cfg} />
     </AbsoluteFill>
   );
@@ -179,4 +183,54 @@ export const AzminCars = makeShowcase({
   kicker: "AZMIN CARS · CONCEPT SITE",
   poster: "sc02/first.jpg",
   hookShade: true,
+});
+
+/** A cramped sales-brochure PDF on a phone: tiny text, then a pinch-zoom that never quite fits. */
+const PdfMock: React.FC<{ len: number }> = () => {
+  const fr = useCurrentFrame();
+  const zoom = interpolate(fr, [0, 90, 120, 140, 165, 186], [1, 1, 2.3, 1.7, 2.6, 2.1], { ...clamp, easing: smooth });
+  const pan = interpolate(fr, [90, 120, 140, 165, 186], [0, -120, 60, -200, -80], clamp);
+  const pinch = fr > 95 && fr < 175 ? 1 : 0;
+  const lines = (n: number, w = 100) => Array.from({ length: n }, (_, i) => (
+    <div key={i} style={{ height: 7, margin: "5px 0", width: `${w - ((i * 37) % 30)}%`, background: "#c9c4b8", borderRadius: 3 }} />));
+  return (
+    <AbsoluteFill style={{ background: `radial-gradient(120% 80% at 50% 50%, #1b2233 0%, #0b0f18 70%)` }}>
+      <div style={{ position: "absolute", left: "50%", top: 560, width: 560, height: 1120, marginLeft: -280, borderRadius: 70, background: "#05080f", padding: 16, boxSizing: "border-box", boxShadow: "0 40px 120px rgba(0,0,0,.6), 0 0 0 3px #2a2f3a" }}>
+        <div style={{ width: "100%", height: "100%", borderRadius: 56, overflow: "hidden", background: "#3a3f4a", position: "relative" }}>
+          <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 70, background: "#262a33", color: "#ddd", font: "600 24px Inter Tight", display: "flex", alignItems: "center", justifyContent: "space-between", padding: "0 30px", zIndex: 2 }}>
+            <span>📄 Brochure_FINAL_v7.pdf</span><span>1 / 24</span>
+          </div>
+          <div style={{ position: "absolute", top: 110, left: 40, width: 448, height: 634, background: "#f6f3ec", padding: 22, boxSizing: "border-box", transform: `translate(${pan}px, ${pan / 3}px) scale(${zoom})`, transformOrigin: "50% 30%", boxShadow: "0 10px 30px rgba(0,0,0,.4)" }}>
+            <div style={{ font: "700 15px Inter Tight", color: "#333" }}>PALM CREST VILLAS · SALES BROCHURE</div>
+            <Img src={staticFile("sc01/first.jpg")} style={{ width: "100%", height: 150, objectFit: "cover", margin: "10px 0" }} />
+            {lines(6)}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 6, margin: "10px 0" }}>
+              {Array.from({ length: 12 }, (_, i) => <div key={i} style={{ height: 14, background: i < 3 ? "#9aa3b5" : "#ddd8cc" }} />)}
+            </div>
+            {lines(9)}
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}><div style={{ flex: 1, height: 90, background: "#ddd8cc" }} /><div style={{ flex: 1, height: 90, background: "#ddd8cc" }} /></div>
+            {lines(5, 80)}
+          </div>
+          {pinch ? <div style={{ position: "absolute", top: 420, left: 200, font: "120px serif", opacity: 0.9, transform: `scale(${1 + 0.15 * Math.sin(fr / 3)})` }}>🤏</div> : null}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+/** SC03 (Wed 4 Nov): teach, "Stop sending buyers a PDF". Reuses the Palm Crest footage. */
+export const NoPdf = makeShowcase({
+  data: nopdf as ShowcaseConfig["data"],
+  clips: [
+    { node: PdfMock, len: 186 },                                   // hook + "pinch, zoom, give up"
+    { src: "sc01/a.mp4", len: 120, startFrom: 84 },                // sky -> living room
+    { src: "sc01/b.mp4", len: 50, freezeAfter: 45 },               // floor plan
+    { src: "sc01/c.mp4", len: 120, chip: "English ⇄ العربية" },
+  ],
+  vo: { hook: 6, pdf: 100, page: 192, lang: 362, end: 484 },
+  title: ["Stop sending", "buyers a PDF."],
+  kicker: "SCROLL PAGE vs PDF · CONCEPT SITE",
+  hookTag: "PROPERTY LAUNCHES",
+  hookSub: null,
+  poster: "sc01/first.jpg",
 });

@@ -1,0 +1,17 @@
+# Reel 03 (Wed 4 Nov 19:30), teach: "Stop sending buyers a PDF". Hook formula #2 Negative Command. Keyword DEMO.
+# Visuals: a cramped brochure PDF on a phone (pinch, zoom), then the Palm Crest concept site. No prices.
+id: sc03-no-pdf
+voice: af_heart
+speed: 1.1
+lines:
+  - id: hook
+    text: Stop sending property buyers a PDF brochure.
+  - id: pdf
+    text: On a phone, they pinch, zoom, squint, and give up.
+  - id: page
+    text: Send them a page they can scroll instead. The view, the community, the floor plan.
+  - id: lang
+    text: In English or Arabic, on the phone already in their hand.
+  - id: end
+    text: We built this one as a concept. Comment DEMO and I'll send you the live link.
+    say: We built this one as a concept. Comment demo, and I'll send you the live link.
