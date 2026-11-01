@@ -57,7 +57,8 @@ def test_after_cutover_only_content_workflows_run_on_their_own():
     Telegram inbox start on their own; every other workflow stays manual."""
     auto = {"tests": None, "telegram-inbox": {"repository_dispatch"},
             "publisher": {"schedule", "push", "repository_dispatch", "workflow_dispatch"},
-            "cleanup": {"schedule", "workflow_dispatch"}}
+            "cleanup": {"schedule", "workflow_dispatch"},
+            "insights": {"schedule", "workflow_dispatch"}}  # read-only snapshot + daily brief, 09:01 Dubai
     for wf in WORKFLOWS.glob("*.yml"):
         on = yaml.safe_load(wf.read_text())[True]
         if wf.stem == "tests":
