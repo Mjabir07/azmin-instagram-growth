@@ -52,6 +52,8 @@ Jabir's `ig-*` skills (ig-plan, ig-reel, ig-caption, ig-carousel, ig-story, ig-d
 ig-profile, ig-human, ig-comment, ig-repurpose) are on his Claude account: use them. Run `ig-human` on any
 caption, script, reply or DM before showing it. Repo skills in `.claude/skills/` (remotion-best-practices,
 playwright-recording, ffmpeg, social, find-skills, text-to-speech, azmin-brand, social-strategy, trend-scout).
+**Daily (Chrome): `.claude/skills/azmin-daily`** (zip in `skills-export/`, Jabir types "azmin-daily" in Claude in Chrome;
+it reads `marketing/daily/today.md`, written 09:01 Dubai by the insights workflow, which also sends it to Telegram).
 **Day-to-day operator: `.claude/skills/azmin-ig-ops`** ("today", "engage", "write the next reel",
 "check the numbers"; Meta rules in its `references/meta-rules.md`). The hard rules above always win over any skill.
 

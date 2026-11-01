@@ -1,8 +1,11 @@
-# Read-only Instagram insights snapshot (agent/social/insights.py) for ig-audit / ig-profile.
-# GET requests only: posts nothing, changes nothing. Saves marketing/insights/<date>.md.
+# Daily 09:00 Dubai: read-only Instagram insights snapshot (agent/social/insights.py, GET requests only) and the
+# daily brief (agent/social/daily_brief.py) -> marketing/daily/<date>.md + today.md, also sent to Jabir's Telegram.
+# Posts nothing, changes nothing on Instagram. The azmin-daily Chrome skill reads marketing/daily/today.md.
 name: insights
 
 on:
+  schedule:
+    - cron: "1 5 * * *"   # 09:01 Dubai
   workflow_dispatch: {}
 
 permissions:
@@ -27,12 +30,17 @@ jobs:
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           META_GRAPH_API_VERSION: ${{ vars.META_GRAPH_API_VERSION }}
+      - name: Daily brief (Telegram)
+        run: uv run python -m agent.social.daily_brief
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       - name: Save
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add marketing/insights
+          git add marketing/insights marketing/daily
           git diff --cached --quiet && echo "Nothing changed" && exit 0
-          git commit -m "Insights snapshot"
+          git commit -m "Insights snapshot + daily brief"
           git pull --rebase origin "${GITHUB_REF_NAME}"
           git push
