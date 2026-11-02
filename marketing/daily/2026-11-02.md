@@ -1,13 +1,14 @@
 ☀️ AZMIN daily brief · Mon 02 Nov
 
-📊 Followers 2 (+1) · following 14 (+0) · posts 7 (+0)
-🎬 Latest reel (Sat 31 Oct 12:31): 6 views · reach 6 · avg watch 2.6 s · skip 83.3% · shares 0
+📊 Followers 2 (+1) · following 19 (+5) · posts 7 (+0)
+🎬 Latest reel (Sat 31 Oct 12:31): 6 views · reach 6 · avg watch 2.5 s · skip 83.3% · shares 0
 
 📅 Today:
 • 19:30 reel sc02-azmin-cars: approved
 
 🔜 Next 3 days:
 • Wed 19:30 reel sc03-no-pdf: approved
+• Thu 19:30 carousel c01-msj-trust: approved
 
 💬 Engagement group today: Property (reach)
    emaardubai, sobharealty, nakheelofficial, dreamize_, growith_agency, picazi.ae
