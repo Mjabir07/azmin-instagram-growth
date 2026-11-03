@@ -1,17 +1,17 @@
-☀️ AZMIN daily brief · Mon 02 Nov
+☀️ AZMIN daily brief · Tue 03 Nov
 
-📊 Followers 2 (+1) · following 19 (+5) · posts 7 (+0)
-🎬 Latest reel (Sat 31 Oct 12:31): 6 views · reach 6 · avg watch 2.5 s · skip 83.3% · shares 0
+📊 Followers 2 (+0) · following 19 (+0) · posts 8 (+1)
+🎬 Latest reel (Mon 02 Nov 19:31): 12 views · reach 12 · avg watch 2.4 s · skip 83.3% · shares 0
 
 📅 Today:
-• 19:30 reel sc02-azmin-cars: approved
+• no post today (stories + engagement only)
 
 🔜 Next 3 days:
 • Wed 19:30 reel sc03-no-pdf: approved
 • Thu 19:30 carousel c01-msj-trust: approved
 
-💬 Engagement group today: Property (reach)
-   emaardubai, sobharealty, nakheelofficial, dreamize_, growith_agency, picazi.ae
+💬 Engagement group today: Cars
+   exoticcarsdubai, firstsupercarrental, mkautoscarrental, pof.detailing, dreamize_, growith_agency, picazi.ae
 
 ✅ Your to-do (about 25 min):
 1. Chrome → Claude extension → type: azmin-daily (it prepares comments, replies and follows)
