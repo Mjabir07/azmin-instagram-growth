@@ -6,18 +6,49 @@
   "tone": "premium, calm, confident; editorial; honest (concept builds are labelled, Yara is labelled as AI)",
   "font": "\"Inter Tight\",\"Inter\",\"MLM\",sans-serif",
   "serif": "\"Instrument Serif\",serif",
-  "colors": { "acc": "#0062F5", "accText": "#0062F5", "onAcc": "#FFFFFF", "text": "#0B0B0C", "bg": "#F4F1EA", "navy": "#071A3D", "cyan": "#00D2E2" },
+  "colors": {
+    "acc": "#0062F5",
+    "accText": "#0062F5",
+    "onAcc": "#FFFFFF",
+    "text": "#0B0B0C",
+    "bg": "#F4F1EA",
+    "navy": "#071A3D",
+    "cyan": "#00D2E2"
+  },
   "paper": "#F4F1EA",
   "captionStyle": "editorial",
-  "voice": { "provider": "elevenlabs", "voice_id": "EXAVITQu4vr4xnSDxMaL", "voice_name": "Sarah - Mature, Reassuring, Confident", "model": "eleven_v4", "tone_tag": "[casual]" },
+  "voice": {
+    "provider": "elevenlabs",
+    "voice_id": "EXAVITQu4vr4xnSDxMaL",
+    "voice_name": "Sarah - Mature, Reassuring, Confident",
+    "model": "eleven_v4",
+    "tone_tag": "[casual]"
+  },
   "host": {
     "enabled": true,
     "name": "Yara",
     "kind": "AI presenter (always labelled as AI, never presented as a real person or a client)",
-    "assets": "media/inbox/YARA-POSE-1..4.jpg, YARA-MOUTH-HALF.jpg, YARA-MOUTH-WIDE.jpg (Google Flow, from brand/ambassador/yara.jpg)",
-    "poses": { "wave": "YARA-POSE-1", "point": "YARA-POSE-2", "think": "YARA-POSE-3", "explain": "YARA-POSE-4" }
+    "assets": "video-pipeline/_azmin-kit/host/ (aligned cut-outs from media/inbox/YARA-POSE-1..4, YARA-MOUTH-HALF/WIDE)",
+    "poses": {
+      "wave": "YARA-POSE-1",
+      "point": "YARA-POSE-2",
+      "think": "YARA-POSE-3",
+      "explain": "YARA-POSE-4"
+    },
+    "lipsync": {
+      "wide_db": -3,
+      "note": "wide mouth only on the loudest syllables (the wide image is a big open 'aah'); half-open otherwise. Jabir 5 Nov."
+    }
   },
-  "cta": { "style": "comment KEYWORD -> DM", "keyword": "DEMO", "steps": ["follow @azmin_digital", "comment \"DEMO\"", "live website demo link (work.azmindigital.com) in DM"] },
+  "cta": {
+    "style": "comment KEYWORD -> DM",
+    "keyword": "DEMO",
+    "steps": [
+      "follow @azmin_digital",
+      "comment \"DEMO\"",
+      "live website demo link (work.azmindigital.com) in DM"
+    ]
+  },
   "rules": [
     "brand name only (AZMIN DIGITAL / @azmin_digital); never a personal name on screen, in captions or in files",
     "no prices, offers or agency/company claims (freelance, not registered yet: CLAUDE.md rule 7)",
@@ -26,5 +57,6 @@
     "no invented numbers, clients or results",
     "AI label ON when posting (Yara's face and voice are AI)",
     "never mix in other brands' voices, characters, scripts or styles"
-  ]
+  ],
+  "kit": "video-pipeline/_azmin-kit/README.md"
 }
