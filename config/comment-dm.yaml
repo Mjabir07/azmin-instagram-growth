@@ -52,3 +52,7 @@ keywords:
     match: [demo, demos]
     title: "our live website demos (open them on your phone and scroll)"
     url: https://work.azmindigital.com
+  SWING:
+    match: [swing]
+    title: "how to make the pendulum reel for your brand (free guide)"
+    guide: marketing/guides/pendulum-reel.pdf
