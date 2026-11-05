@@ -1,0 +1,204 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+@font-face{font-family:"MLM";src:url(fonts/NotoSansMalayalam-500.woff2) format("woff2");font-weight:500}
+@font-face{font-family:"MLM";src:url(fonts/NotoSansMalayalam-700.woff2) format("woff2");font-weight:700}
+@font-face{font-family:"MLM";src:url(fonts/NotoSansMalayalam-800.woff2) format("woff2");font-weight:800}
+@font-face{font-family:"Unb";src:url(fonts/Unbounded-wght-900.woff2) format("woff2");font-weight:900}
+@font-face{font-family:"Unb";src:url(fonts/Unbounded-wght-600.woff2) format("woff2");font-weight:600}
+html,body{margin:0;background:#F3F6FA}
+canvas{display:block}
+</style>
+<script src="brand.js"></script>
+<script src="words.js"></script>
+<script src="timeline.js"></script>
+</head><body>
+<canvas id="c" width="1080" height="1920"></canvas>
+<script>
+// Reel Studio – canvas reel template. Brand comes from brand.js, timing from timeline.js, scenes from scenes.js.
+// Deterministic: draw(t) renders the frame at time t (s). Scenes draw into an offscreen layer,
+// which is composited with the transition (whip / zoom-through / blur swap), punch-ins and motion blur.
+const W = 1080, H = 1920, END = TIMELINE.END;
+const C = document.getElementById('c'), X0 = C.getContext('2d');
+const OC = document.createElement('canvas'); OC.width = W; OC.height = H;
+const OX = OC.getContext('2d');
+let X = OX; // scenes draw here
+const COL = Object.assign({ bg:'#F3F6FA', card:'#FFFFFF', card2:'#F2F5F9', line:'rgba(15,23,42,0.09)', text:'#0B1220',
+  mute:'#5B6878', dim:'#9AA6B4', acc:'#22CBEF', accText:'#0790B5', onAcc:'#04131A', red:'#F0405F', mask:'rgba(15,23,42,0.11)' }, BRAND.colors || {});
+const F = (w, s) => `${w} ${s}px ${BRAND.font || '"Inter Display","Inter","MLM",sans-serif'}`;
+const SC = TIMELINE.SC;
+// transition type INTO scene k: whip-left, zoom (through a point), whip-up, blur
+const TR = TIMELINE.TR;
+const ZOOM_PT = TIMELINE.ZOOM_PT || {};
+const PUNCH = TIMELINE.PUNCH || [];
+const STICK = TIMELINE.STICK || [];
+
+// ---------- helpers ----------
+const cl = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+const lin = (t, a, b) => cl((t - a) / (b - a));
+const eOut = p => 1 - Math.pow(1 - p, 3);
+const eExpo = p => p >= 1 ? 1 : 1 - Math.pow(2, -10 * p);
+const eIn = p => p * p * p;
+const eInOut = p => p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+const eBack = p => { const c1 = 1.5, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+const mix = (a, b, p) => a + (b - a) * p;
+function rr(x, y, w, h, r) { X.beginPath(); X.roundRect(x, y, w, h, r); }
+function fillRR(x, y, w, h, r, c) { rr(x, y, w, h, r); X.fillStyle = c; X.fill(); }
+function strokeRR(x, y, w, h, r, c, lw = 2) { rr(x, y, w, h, r); X.strokeStyle = c; X.lineWidth = lw; X.stroke(); }
+function txt(s, x, y, font, c, align = 'left') { X.font = font; X.fillStyle = c; X.textAlign = align; X.textBaseline = 'middle'; X.fillText(s, x, y); }
+function glow(c, b, oy = 0) { X.shadowColor = c; X.shadowBlur = b; X.shadowOffsetY = oy; }
+function noGlow() { X.shadowColor = 'transparent'; X.shadowBlur = 0; X.shadowOffsetY = 0; }
+const seg = new Intl.Segmenter('ml', { granularity: 'grapheme' });
+const graph = s => Array.from(seg.segment(s), g => g.segment);
+function typed(s, p) { const g = graph(s); return g.slice(0, Math.round(g.length * cl(p))).join(''); }
+function rand(i) { const x = Math.sin(i * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+function card(x, y, w, h, r = 40) {
+  X.save(); glow('rgba(15,23,42,0.14)', 70, 24); fillRR(x, y, w, h, r, COL.card); noGlow();
+  strokeRR(x, y, w, h, r, COL.line, 2); X.restore();
+}
+function sheen(x, y, w, h, p, r = 40) { // light sweep across a card once
+  if (p <= 0 || p >= 1) return; X.save(); rr(x, y, w, h, r); X.clip();
+  const sx = mix(x - 400, x + w + 200, eInOut(p)); const g = X.createLinearGradient(sx, 0, sx + 260, 0);
+  g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(0.5, 'rgba(255,255,255,0.75)'); g.addColorStop(1, 'rgba(255,255,255,0)');
+  X.fillStyle = g; X.fillRect(x, y, w, h); X.restore();
+}
+function chip(x, y, label, c, font, fill) {
+  X.font = font; const w = X.measureText(label).width + 48;
+  fillRR(x, y - 30, w, 60, 30, fill); txt(label, x + 24, y + 1, font, c); return w;
+}
+function pin(x, y, s, c, hole = '#FFFFFF') {
+  X.save(); X.translate(x, y); X.scale(s, s);
+  X.beginPath(); X.moveTo(0, 0); X.bezierCurveTo(-28, -32, -28, -66, 0, -66); X.bezierCurveTo(28, -66, 28, -32, 0, 0);
+  X.fillStyle = c; X.fill(); X.beginPath(); X.arc(0, -44, 10, 0, 7); X.fillStyle = hole; X.fill(); X.restore();
+}
+function check(x, y, s, c, p = 1) {
+  if (p <= 0) return; X.save(); X.strokeStyle = c; X.lineWidth = 7 * s; X.lineCap = 'round'; X.lineJoin = 'round'; X.beginPath();
+  const a = [-12, 0], b = [-3, 9], d = [14, -10]; X.moveTo(x + a[0] * s, y + a[1] * s);
+  if (p < 0.5) { const q = p / 0.5; X.lineTo(x + mix(a[0], b[0], q) * s, y + mix(a[1], b[1], q) * s); }
+  else { const q = (p - 0.5) / 0.5; X.lineTo(x + b[0] * s, y + b[1] * s); X.lineTo(x + mix(b[0], d[0], q) * s, y + mix(b[1], d[1], q) * s); }
+  X.stroke(); X.restore();
+}
+function cross(x, y, s, c, p = 1) {
+  if (p <= 0) return; X.save(); X.strokeStyle = c; X.lineWidth = 7 * s; X.lineCap = 'round'; X.beginPath();
+  const q1 = cl(p * 2), q2 = cl(p * 2 - 1);
+  X.moveTo(x - 11 * s, y - 11 * s); X.lineTo(x + mix(-11, 11, q1) * s, y + mix(-11, 11, q1) * s);
+  if (q2 > 0) { X.moveTo(x + 11 * s, y - 11 * s); X.lineTo(x + mix(11, -11, q2) * s, y + mix(-11, 11, q2) * s); }
+  X.stroke(); X.restore();
+}
+function maskBar(x, y, w, h) { fillRR(x, y - h / 2, w, h, h / 2, COL.mask); }
+
+// ---------- background (never cuts) ----------
+function background(t) {
+  const c = X0; c.fillStyle = COL.bg; c.fillRect(0, 0, W, H);
+  const blob = (x, y, r, col) => { const g = c.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, col); g.addColorStop(1, 'rgba(255,255,255,0)'); c.fillStyle = g; c.fillRect(0, 0, W, H); };
+  blob(860 + Math.sin(t * 0.3) * 120, 380 + Math.cos(t * 0.25) * 80, 760, 'rgba(34,203,239,0.22)');
+  blob(150 + Math.cos(t * 0.22) * 100, 1250 + Math.sin(t * 0.27) * 120, 820, 'rgba(139,120,255,0.16)');
+  blob(600, 1900, 700, 'rgba(34,203,239,0.10)');
+  c.fillStyle = 'rgba(15,23,42,0.07)'; const off = (t * 10) % 54;
+  for (let y = -54 + off; y < H; y += 54) for (let x = 27; x < W; x += 54) { c.beginPath(); c.arc(x, y, 1.7, 0, 7); c.fill(); }
+}
+function brand(t) {
+  X.save(); X.globalAlpha = lin(t, 0.15, 0.6);
+  glow('rgba(15,23,42,0.12)', 20, 6); fillRR(60, 120, 300, 76, 38, 'rgba(255,255,255,0.92)'); noGlow();
+  fillRR(72, 132, 52, 52, 26, COL.acc); txt(BRAND.initial || '', 98, 159, F(800, 32), COL.onAcc, 'center');
+  txt(BRAND.name || '', 140, 159, F(800, 36), COL.text); X.restore();
+}
+
+// ---------- anchors ----------
+function WT(text, n = 1) { let k = 0; for (const w of WORDS) { if (w[0] === text && ++k === n) return w[1]; } console.warn('no word', text, n); return 0; }
+function wrapPara(text, font, maxW) { X.font = font; const out = []; let cur = '';
+  text.split(' ').forEach(w => { const t = cur ? cur + ' ' + w : w; if (X.measureText(t).width > maxW && cur) { out.push(cur); cur = w; } else cur = t; });
+  if (cur) out.push(cur); return out; }
+function terminal(x, y, w, h, title) {
+  glow('rgba(15,23,42,0.25)', 50, 18); fillRR(x, y, w, h, 30, '#0E1520'); noGlow();
+  fillRR(x, y, w, 64, 30, '#1B2533'); X.fillStyle = '#1B2533'; X.fillRect(x, y + 34, w, 30);
+  [['#FF5F57', 0], ['#FEBC2E', 1], ['#28C840', 2]].forEach(([c, i]) => { X.beginPath(); X.arc(x + 40 + i * 32, y + 32, 10, 0, 7); X.fillStyle = c; X.fill(); });
+  txt(title, x + w / 2, y + 33, F(700, 26), '#9AA6B4', 'center');
+}
+</script>
+<script>
+// ---------- compositing: transitions, punch-ins, motion blur ----------
+function renderScene(k, t) {
+  OX.setTransform(1, 0, 0, 1, 0, 0); OX.clearRect(0, 0, W, H); OX.globalAlpha = 1; X = OX; noGlow();
+  SCENES[k](t - SC[k][0], t);
+}
+function punch(t, k) { let s = 1; PUNCH.forEach(([pt, a]) => { if (pt >= SC[k][0] && pt < SC[k][1] && t >= pt) s += a * eExpo(lin(t, pt, pt + 0.3)); }); return s; }
+function blit(o) {
+  const c = X0; c.save(); c.globalAlpha = o.a;
+  if (o.blur > 0.3) c.filter = `blur(${o.blur.toFixed(1)}px)`;
+  const ox = o.ox ?? 540, oy = o.oy ?? 760;
+  c.translate(ox + (o.x || 0), oy + (o.y || 0)); c.scale(o.s, o.s); c.translate(-ox, -oy);
+  c.drawImage(OC, 0, 0); c.restore();
+}
+function sceneState(t, k) {
+  const [a, b] = SC[k]; const IN = 0.4, OUT = 0.22;
+  if (t < a - 0.02 || t > b + 0.02) return null;
+  let st = { a: 1, s: punch(t, k), x: 0, y: 0, blur: 0 };
+  if (k > 0 && t < a + IN) { const p = lin(t, a, a + IN), e = eExpo(p), ty = TR[k];
+    if (ty === 'whip') { st.x = (1 - e) * 700; st.blur = (1 - e) * 22; }
+    if (ty === 'up') { st.y = (1 - e) * 900; st.blur = (1 - e) * 22; }
+    if (ty === 'zoom') { st.s *= mix(1.25, 1, e); st.blur = (1 - e) * 14; st.a = cl(p * 3); }
+    if (ty === 'blur') { st.blur = (1 - e) * 16; st.a = cl(p * 2.5); st.s *= mix(1.06, 1, e); } }
+  if (k < SC.length - 1 && t > b - OUT) { const p = lin(t, b - OUT, b), e = eIn(p), ty = TR[k + 1];
+    if (ty === 'whip') { st.x = -e * 900; st.blur = e * 24; }
+    if (ty === 'up') { st.y = -e * 1100; st.blur = e * 24; }
+    if (ty === 'zoom') { const [zx, zy] = ZOOM_PT[k + 1]; st.ox = zx; st.oy = zy; st.s *= mix(1, 3.2, e); st.blur = e * 20; st.a = 1 - cl((p - 0.6) / 0.4); }
+    if (ty === 'blur') { st.blur = e * 14; st.a = 1 - p; } }
+  return st;
+}
+function flood(t) {
+  (TIMELINE.FLOOD || []).forEach(k => { const a = SC[k][0]; const p = lin(t, a - 0.12, a + 0.18); if (p > 0 && p < 1) {
+    X0.save(); X0.globalAlpha = Math.sin(p * Math.PI) * 0.55; X0.fillStyle = COL.acc; X0.fillRect(0, 0, W, H); X0.restore(); } });
+}
+
+// ---------- captions (karaoke pill) ----------
+const CAP = (() => { const out = []; let k = 0; CHUNKS.forEach(n => { out.push(WORDS.slice(k, k + n).map(w => ({ s: w[0], a: w[1], b: w[2], hi: HILITE.has(w[0]) }))); k += n; }); return out; })();
+function captions(t) {
+  const c = X0;
+  let idx = -1; for (let i = 0; i < CAP.length; i++) if (t >= CAP[i][0].a - 0.08) idx = i;
+  if (idx < 0) return; const ch = CAP[idx], next = CAP[idx + 1];
+  const endT = next ? Math.min(next[0].a - 0.08, ch[ch.length - 1].b + 0.8) : ch[ch.length - 1].b + 1.2;
+  if (t > endT) return;
+  const fade = 1 - lin(t, endT - 0.1, endT);
+  const fs = 84, gap = 44; c.font = F(800, fs);
+  const ws = ch.map(w => c.measureText(w.s).width); const maxW = 900;
+  let lines = [[]], lw = [0];
+  ws.forEach((w, i) => { let L = lines.length - 1; if (lw[L] + w > maxW && lines[L].length) { lines.push([]); lw.push(0); L++; } lines[L].push(i); lw[L] += w + gap; });
+  const baseY = 1330 - (lines.length - 1) * 52;
+  // active word = the latest word that has started (stays lit through short gaps)
+  let act = -1; ch.forEach((w, i) => { if (t >= w.a - 0.07) act = i; });
+  lines.forEach((ln, li) => {
+    let x = 540 - (lw[li] - gap) / 2; const y = baseY + li * 104;
+    ln.forEach(i => { const w = ch[i]; if (t < w.a - 0.07) { x += ws[i] + gap; return; }
+      const p = lin(t, w.a - 0.07, w.a + 0.08); const isActive = i === act;
+      c.save(); c.globalAlpha = fade * cl(p * 1.6); c.translate(x + ws[i] / 2, y);
+      const s = mix(1.25, 1, eExpo(p)) * (isActive ? 1.06 : 1); c.scale(s, s);
+      if (p < 1) c.filter = `blur(${((1 - p) * 6).toFixed(1)}px)`;
+      if (isActive) { c.shadowColor = 'rgba(34,203,239,0.55)'; c.shadowBlur = 24; c.shadowOffsetY = 6;
+        c.beginPath(); c.roundRect(-ws[i] / 2 - 18, -58, ws[i] + 36, 116, 26); c.fillStyle = COL.acc; c.fill();
+        c.shadowColor = 'transparent'; c.shadowBlur = 0; c.shadowOffsetY = 0; }
+      c.font = F(800, fs); c.textAlign = 'center'; c.textBaseline = 'middle';
+      if (!isActive) { c.lineJoin = 'round'; c.lineWidth = 16; c.strokeStyle = 'rgba(255,255,255,0.95)'; c.strokeText(w.s, 0, 2); }
+      c.fillStyle = isActive ? COL.onAcc : (w.hi ? COL.accText : COL.text); c.fillText(w.s, 0, 2);
+      c.restore(); x += ws[i] + gap; });
+  });
+}
+function stickers(t) {
+  STICK.forEach(([a, b, e], i) => { if (t < a || t > b) return; const p = eBack(lin(t, a, a + 0.3)), o = 1 - lin(t, b - 0.15, b);
+    const c = X0; c.save(); c.globalAlpha = cl(p) * o; c.translate(i % 2 ? 170 : 900, 1090); c.rotate((i % 2 ? -1 : 1) * 0.18 * (1 - p * 0.5));
+    c.scale(p, p); c.font = '130px "Noto Color Emoji",sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillStyle = '#000'; c.shadowColor = 'rgba(15,23,42,0.25)'; c.shadowBlur = 20; c.shadowOffsetY = 8; c.fillText(e, 0, 0); c.restore(); });
+}
+
+window.draw = t => {
+  X0.setTransform(1, 0, 0, 1, 0, 0); X0.globalAlpha = 1; X0.filter = 'none';
+  background(t);
+  for (let k = 0; k < SC.length; k++) { const st = sceneState(t, k); if (!st || st.a <= 0.001) continue; renderScene(k, t); blit(st); }
+  flood(t); X = X0; if (typeof host === 'function') host(t); brand(t); stickers(t); captions(t);
+};
+</script>
+<script src="scenes.js"></script>
+<script src="style.js"></script>
+<script src="mouth.js"></script>
+<script src="host-config.js"></script>
+<script src="host.js"></script>
+</body></html>

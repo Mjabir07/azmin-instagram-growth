@@ -54,6 +54,10 @@ caption, script, reply or DM before showing it. Repo skills in `.claude/skills/`
 playwright-recording, ffmpeg, social, find-skills, text-to-speech, azmin-brand, social-strategy, trend-scout).
 **Daily (Chrome): `.claude/skills/azmin-daily`** (zip in `skills-export/`, Jabir types "azmin-daily" in Claude in Chrome;
 it reads `marketing/daily/today.md`, written 09:01 Dubai by the insights workflow, which also sends it to Telegram).
+**Reels with Yara on screen: `.claude/skills/reel-studio`** (copied from Mjabir07/reel-studio, read-only there). AZMIN's
+profile is `brand.json` (English, AZMIN Editorial, ElevenLabs voice "Sarah" EXAVITQu4vr4xnSDxMaL, Yara as AI presenter
+with lip-sync from the Flow poses in media/inbox, CTA comment DEMO). Work folder per reel: `video-pipeline/<reel>/`
+(test: `video-pipeline/test-yara/`, aligned host assets in its `host/`). Never mix in other brands.
 **Day-to-day operator: `.claude/skills/azmin-ig-ops`** ("today", "engage", "write the next reel",
 "check the numbers"; Meta rules in its `references/meta-rules.md`). The hard rules above always win over any skill.
 
