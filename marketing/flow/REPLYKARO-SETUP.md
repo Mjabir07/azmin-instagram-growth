@@ -54,7 +54,7 @@ AUTOMATION 2 - keyword SWING
 - DM:
   Hi! 👋 As promised: how to make the pendulum reel for your brand (free guide)
 
-  🔗 https://cdn.jsdelivr.net/gh/Mjabir07/azmin-instagram-growth@main/marketing/guides/pendulum-reel.pdf
+  🔗 https://drive.google.com/file/d/1kxBU4W_zIfnLEPbumyhVefWQTi8bacAF/view?usp=sharing
 
   ➕ Follow @azmin_digital for a new one every week.
   What are you working on at the moment? 🙂
