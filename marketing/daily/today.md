@@ -1,16 +1,16 @@
-☀️ AZMIN daily brief · Thu 05 Nov
+☀️ AZMIN daily brief · Fri 06 Nov
 
-📊 Followers 2 (+0) · following 19 (+0) · posts 9 (+1)
+📊 Followers 2 (+0) · following 19 (+0) · posts 10 (+1)
 🎬 Latest reel (Wed 04 Nov 19:41): 6 views · reach 6 · avg watch 0.7 s · skip 100% · shares 0
 
 📅 Today:
-• 19:30 carousel c01-msj-trust: approved
+• no post today (stories + engagement only)
 
 🔜 Next 3 days:
-• nothing queued yet: ask Claude Code "write the next reel"
+• Sat 12:30 reel sc04-pendulum: approved
 
-💬 Engagement group today: Business news
-   forbesmiddleeast, arabianbusiness, gulfbusiness, dubaisme, dreamize_, growith_agency, picazi.ae
+💬 Engagement group today: Local businesses (future buyers)
+   fuzecafedubai, guapasalon.dubai, shines_dubai, dreamize_, growith_agency, picazi.ae
 
 ✅ Your to-do (about 25 min):
 1. Chrome → Claude extension → type: azmin-daily (it prepares comments, replies and follows)
