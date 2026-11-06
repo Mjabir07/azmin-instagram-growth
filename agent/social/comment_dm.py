@@ -241,6 +241,9 @@ def main() -> int:
     if not posting_live():  # same switch as posting: no DMs or replies while posting is off
         args.dry_run = True
     cfg = yaml.safe_load(CONFIG.read_text())
+    if cfg.get("mode") in ("off", False):  # YAML reads a bare off as False. Another tool (e.g. ReplyKaro) answers the comments: never DM twice
+        print("comment -> DM is off in config/comment-dm.yaml (handled elsewhere).")
+        return 0
     accounts = yaml.safe_load((ROOT / "config/accounts.yaml").read_text())["meta"]
     token = os.environ.get("META_ACCESS_TOKEN", "").strip()
     tg_token, tg_chat = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip(), os.environ.get("TELEGRAM_CHAT_ID", "").strip()

@@ -198,3 +198,15 @@ def test_demo_keyword_sends_the_demo_site_without_prices(cfg):
     assert "https://work.azmindigital.com" in dm
     for word in ("AED", "price", "website or", "+971"):  # rule 7: no prices or offers in DMs
         assert word not in dm
+
+
+def test_mode_off_sends_nothing(monkeypatch, tmp_path):
+    import sys
+    cfg_file = tmp_path / "comment-dm.yaml"
+    cfg_file.write_text("mode: off\nkeywords: {}\n")
+    monkeypatch.setattr(comment_dm, "CONFIG", cfg_file)
+    monkeypatch.setattr(comment_dm, "posting_live", lambda: True)
+    monkeypatch.setenv("META_ACCESS_TOKEN", "t")
+    monkeypatch.setattr(comment_dm, "Meta", lambda *a: (_ for _ in ()).throw(AssertionError("must not call Meta")))
+    monkeypatch.setattr(sys, "argv", ["comment_dm"])
+    assert comment_dm.main() == 0
