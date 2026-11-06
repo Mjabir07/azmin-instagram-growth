@@ -30,64 +30,69 @@ th{font-weight:800}
 .cta b{color:#00D2E2}
 .wa{display:inline-block;background:#25D366;color:#fff;border-radius:99px;padding:4px 12px;font-weight:800;margin-top:6px}
 .muted{color:#6B6A66;font-size:9.5pt}
-.cta{position:static;margin-top:6mm}.page{padding-bottom:12mm}
+.cta{position:static;margin-top:5mm}.page{padding:12mm 15mm 8mm}h1{margin-top:5mm}h2{margin:4mm 0 1.2mm}
 .shots{display:flex;gap:4mm;float:right;margin:0 0 3mm 5mm}.shots img{width:34mm;border-radius:6px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
 </style></head><body>
 <div class="page">
   <div class="head"><img src="../../brand/logo.png" alt="">azmindigital<span class="r">free guide · 03</span></div>
-  <h1>Make the <em>pendulum</em> reel for your brand</h1>
-  <div class="sub">A badge on a string swings across your headline, and the words change where the string passes.</div>
+  <h1>Make the <em>pendulum</em> reel with Claude</h1>
+  <div class="sub">A badge on a string swings across your headline, and the words change where the string passes. One prompt, no editing skills.</div>
   <div class="shots"><img src="img/pendulum-1.jpg" alt=""><img src="img/pendulum-2.jpg" alt=""></div>
 
   <h2 style="margin-top:3mm">Why it works</h2>
-  <p>It's 10 to 12 seconds, it moves from the first frame, and every swing shows one thing you do. Then it swings back to
-  one call to action. People watch it twice to read every word, which is exactly the signal Instagram looks for.</p>
+  <p>It's 12 seconds, it moves from the first frame, and every swing shows one thing you do, then swings back to one call
+  to action. People watch it twice to read every word, which is exactly the signal Instagram looks for.</p>
 
   <h2>What you need (free)</h2>
-  <ul><li><b>CapCut</b> (phone or desktop) for the animation and sound</li>
-  <li><b>Canva</b> (free) for the images</li><li>Your logo, and 4 short service words + 1 call to action</li></ul>
+  <ul><li>A free <b>claude.ai</b> account (phone app or browser)</li>
+  <li>Your <b>4 services</b> (two short lines each), <b>1 call to action</b>, your <b>2 brand colours</b> and your <b>@handle</b></li>
+  <li>Your phone, to screen-record and post</li></ul>
 
   <h2><span class="n">1</span> Plan your words</h2>
-  <p>Two short lines per word, max about 8 letters per line. Alternate: service, call to action, service, call to action.</p>
-  <table><tr><th>Swing</th><th>Example</th></tr>
-  <tr><td>1, 3, 5, 7</td><td>SCROLL WEBSITES · LAUNCH PAGES · AI CHATBOTS · BOOKING SYSTEMS (your own services)</td></tr>
-  <tr><td>2, 4, 6, 8</td><td>COMMENT GUIDE (or DM US, FOLLOW US) in your brand colour</td></tr></table>
+  <p>Two short lines per word, max about 8 letters per line. Alternate service, call to action, service, call to action.</p>
+  <p class="muted">Example: SCROLL WEBSITES · COMMENT GUIDE · LAUNCH PAGES · COMMENT GUIDE · AI CHATBOTS · COMMENT GUIDE · BOOKING SYSTEMS · COMMENT GUIDE</p>
 
-  <h2><span class="n">2</span> Make the images in Canva</h2>
-  <ul><li><b>Background:</b> 1080 × 1920, one light plain colour.</li>
-  <li><b>Words:</b> one transparent PNG per word, same size (1080 × 1920), text in exactly the same place, very bold font.</li>
-  <li><b>Pendulum:</b> a transparent PNG 1080 × 3000. Draw a thin dark line <b>from the exact centre of the canvas
-  straight down</b> to a white circle with your logo. Because the line starts at the centre, rotating the image swings it
-  like a real pendulum.</li></ul>
+  <h2><span class="n">2</span> Paste the prompt into Claude</h2>
+  <p>Open <b>claude.ai</b>, start a <b>new chat</b> and paste the prompt from the next page. Change only the parts in
+  <b>[brackets]</b> (initials, colours, words, @handle) and send it.</p>
+
+  <h2><span class="n">3</span> Preview and fine-tune</h2>
+  <p>Claude builds a live preview (an "artifact") next to the chat. Press <b>Play</b>. Not quite right? Reply in plain
+  words, one change at a time: <i>"swing a bit slower"</i>, <i>"make the words bigger"</i>, <i>"use my blue #1A73E8"</i>,
+  <i>"add 2 more swings"</i>.</p>
+
+  <h2><span class="n">4</span> Turn it into a reel</h2>
+  <p>Open the artifact on your <b>phone</b> (Claude app or the artifact's share link), make it full screen, start your
+  phone's <b>screen recording</b> and press Play. Post it as a reel: trim the ends in Instagram's editor and add music
+  from Instagram's library.</p>
 </div>
 
 <div class="page">
   <div class="head"><img src="../../brand/logo.png" alt="">azmindigital<span class="r">free guide · 03</span></div>
+  <h2 style="margin-top:4mm">The prompt (copy all of it)</h2>
+  <span class="cmd" style="white-space:pre-wrap;word-break:normal;font-size:8.8pt;line-height:1.45">Create a single-file HTML page (an artifact) with a 1080×1920 canvas, scaled to fit the screen (9:16), on a plain [#F4F1EA] background. Make a 12-second animation that starts when I press a Play button and can be replayed.
 
-  <h2><span class="n">3</span> Swing it in CapCut</h2>
-  <ul><li>New project, 9:16. Add the background (12 s).</li>
-  <li>Add the pendulum PNG as an overlay. Move it up until the circle sits just under your words (the centre of the PNG,
-  the pivot, ends up above the top edge).</li>
-  <li>Keyframe the <b>rotation</b>: 0 s at −17°, 1 s at +17°, 2 s at −17°, and so on for 7 or 8 swings. End at 0° and
-  use ease-in-out on each keyframe so it slows at the ends like a real pendulum.</li></ul>
+1. Pendulum: a thin dark line hangs from a pivot above the top edge (x = centre, y = -420) down to a round white badge (radius 92 px, soft shadow) with my initials &quot;[AZ]&quot; in [#0062F5] in the middle. String length 1450 px.
+2. It swings left and right 7 times, one swing per second, between -17° and +17°, with a cosine ease so it slows at the ends like a real pendulum.
+3. Behind it, a big two-line headline in a very heavy bold font, centred at y = 820, 134 px. Words in this order: [SCROLL / WEBSITES], [COMMENT / GUIDE], [LAUNCH / PAGES], [COMMENT / GUIDE], [AI / CHATBOTS], [COMMENT / GUIDE], [BOOKING / SYSTEMS], [COMMENT / GUIDE]. The call-to-action words are in [#0062F5], the others near-black.
+4. The wipe: during each swing the string is the edge between two words. Draw the headline twice and clip each copy to one side of the line through the pivot and the badge: the side the pendulum is moving away from shows the NEW word, the side ahead shows the OLD word, so the new word appears exactly where the string has passed.
+5. A small &quot;[@yourhandle]&quot; above the headline and a small footer &quot;[WEBSITES • AI • MOTION]&quot; at y = 1500.
+6. After the last swing the pendulum settles to the middle with a small damped wobble, the string and words fade out, the badge moves to the centre (y = 1000) and grows a little, and &quot;[@yourhandle]&quot; and &quot;[comment GUIDE for the free guide]&quot; appear under it.
 
-  <h2><span class="n">4</span> The wipe (the magic part)</h2>
-  <ul><li>Put the old word and the new word on two overlay tracks, one above the other.</li>
-  <li>On the <b>new</b> word add a <b>Mask → Split</b> (linear) mask. Rotate the mask to the same angle as the string and
-  keyframe its position so its edge follows the string through that swing. Invert it if the wrong side shows.</li>
-  <li>Repeat for each swing. Tip: if this feels fiddly, simply cut to the new word at the moment the string crosses the
-  middle. It still looks good.</li></ul>
-  <p class="muted">Menu names can differ slightly between CapCut versions and phone vs desktop.</p>
+Use time-based animation (requestAnimationFrame) so the timing is the same on every device. No external libraries, no sound.</span>
+  <p class="muted">Logo: the prompt uses your initials in a circle, which always works. To use your real logo, add
+  "use this logo image: [public link to your logo]" at the end.</p>
 
-  <h2><span class="n">5</span> Ending and sound</h2>
-  <ul><li>Last 3 seconds: the pendulum stops, the circle moves to the middle, and your @handle and call to action appear.</li>
-  <li>One "whoosh" sound per swing, placed at the fastest point (the middle of each swing). Add soft music underneath.</li>
-  <li>Export 1080 × 1920, 30 fps. Add a clear cover.</li></ul>
+  <h2>Handy follow-up prompts</h2>
+  <ul><li><i>"Make the wipe edge follow the string exactly, even at the ends of the swing."</i></li>
+  <li><i>"Add a soft shadow under the words and make the font heavier."</i></li>
+  <li><i>"Make a second version in dark mode: background #0B1220, white words."</i></li>
+  <li><i>"Change the words to: [your list]."</i></li></ul>
 
-  <h2>How we built ours (for coders)</h2>
-  <p>Ours is made in code: an HTML canvas with <code>angle = A · cos(π · p)</code> for each swing, the headline drawn twice and
-  clipped on each side of the string line, every frame saved and joined with ffmpeg. Ask an AI assistant:</p>
-  <span class="cmd">Build an HTML canvas animation, 1080×1920, 12 s: a pendulum (thin line from above the top edge to a round logo badge) swings left and right 7 times. A two-line bold headline sits behind it; where the string passes, the text wipes from the old word to the next one (clip the text on each side of the string line). Words: &lt;your list&gt;. Then the pendulum settles, the badge moves to the centre and @yourhandle appears.</span>
+  <h2>For coders: a real MP4 straight from code</h2>
+  <p>In <b>Claude Code</b>, after the page works, ask: <i>"Render this page frame by frame at 30 fps with Playwright
+  (one screenshot per frame, time set by code, not real time) and join the frames into a 1080×1920 MP4 with ffmpeg.
+  Add a short whoosh at the middle of each swing."</i> That's how ours was made.</p>
 
   <div class="cta"><b>Follow @azmin_digital</b> for a new free guide every week.<br>
     Comment <b>DEMO</b> on any reel to see our live website demos.</div>
