@@ -29,8 +29,11 @@ def test_posting_switch(monkeypatch, tmp_path):
     assert publish.posting_live()
 
 
-def test_comment_dm_is_dry_run_while_posting_is_off(monkeypatch):
+def test_comment_dm_is_dry_run_while_posting_is_off(monkeypatch, tmp_path):
     seen = {}
+    cfg = tmp_path / "comment-dm.yaml"
+    cfg.write_text("mode: auto\nkeywords: {}\n")  # the real config may be off (ReplyKaro); test the bot itself
+    monkeypatch.setattr(comment_dm, "CONFIG", cfg)
 
     def fake_run(meta, cfg, accounts, state, now, live):
         seen["live"] = live
