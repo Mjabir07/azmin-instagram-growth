@@ -8,7 +8,7 @@
 # Only the fixed text below is ever sent: no AI-written DMs, no prices, no offers (CLAUDE.md rule 7).
 # A keyword sends a guide PDF from this repo (guide:) or a web page (url:).
 # mode: off -> this repo sends nothing (set it when ReplyKaro runs the same keywords, so nobody gets two DMs).
-mode: auto
+mode: "off"   # 6 Nov: ReplyKaro answers DEMO and SWING (marketing/flow/REPLYKARO-SETUP.md)
 max_per_run: 25          # safety cap so a viral post can't trigger a burst Meta might flag as spam
 lookback_days: 7         # Meta allows private replies up to 7 days after the comment
 
