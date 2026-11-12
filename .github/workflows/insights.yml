@@ -1,5 +1,6 @@
 # Daily 09:00 Dubai: read-only Instagram insights snapshot (agent/social/insights.py, GET requests only) and the
-# daily brief (agent/social/daily_brief.py) -> marketing/daily/<date>.md + today.md, also sent to Jabir's Telegram.
+# daily brief (agent/social/daily_brief.py) -> marketing/daily/<date>.md + today.md. Telegram sending is OFF
+# (Jabir 12 Nov: no auto updates in Telegram); to turn it back on, remove --no-telegram and add the two secrets.
 # Posts nothing, changes nothing on Instagram. The azmin-daily Chrome skill reads marketing/daily/today.md.
 name: insights
 
@@ -30,11 +31,8 @@ jobs:
         env:
           META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
           META_GRAPH_API_VERSION: ${{ vars.META_GRAPH_API_VERSION }}
-      - name: Daily brief (Telegram)
-        run: uv run python -m agent.social.daily_brief
-        env:
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      - name: Daily brief (file only, no Telegram)
+        run: uv run python -m agent.social.daily_brief --no-telegram
       - name: Save
         run: |
           git config user.name "github-actions[bot]"
