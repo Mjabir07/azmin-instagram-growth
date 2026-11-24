@@ -28,6 +28,9 @@ automation there, because every push rebuilds the live site. We only copied its 
 7. **Freelance, not registered yet (Jabir 29 Oct): organic only.** No paid ads, and no prices, offers, or
    "agency"/"company" claims in posts, captions, guides or DMs. Calls to action = follow + comment WORD for a free
    guide. Real client work only with that client's OK. Until the business is registered, nothing is sold on Instagram.
+   **Exception (Jabir, 24 Nov):** the "AI business assistant" ad (Malayali business owners, comment LINK) may run on
+   @azmin_digital. The AI tool is free; Jabir's setup guide is paid, and he sends the payment link by hand to people
+   who comment or DM. No price in the video, caption or automated DMs, and the tool's name is never shown.
 
 ## How it works
 - `marketing/queue/*.yaml`: one file per post. Status: draft → pending (preview sent) → approved (✅) → posted.

@@ -1,0 +1,10 @@
+frames/
+clipframes/
+prev/
+out/
+picture.mp4
+premix.wav
+music.wav
+sfx.wav
+vo/*.wav
+render.log
