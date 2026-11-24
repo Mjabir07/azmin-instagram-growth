@@ -36,7 +36,7 @@ Reel (comment LINK / DM)
 ```
 
 **Brand links (short and easy to say in a reel):**
-- `azmindigital.com/guide` → redirects to the landing page. This is a Cloudflare **dashboard redirect rule**, so no code is pushed to the website repo.
+- **Built 24 Nov:** `azmindigital.com/ai-assistant` (separate Cloudflare Worker; code in the private website repo, branch `feature/ai-assistant-guide`, `workers/ai-assistant-guide/`).
 - `guide.azmindigital.com` = the landing page itself.
 - Razorpay page custom URL: `pages.razorpay.com/azmin-ai-guide` (or the `rzp.io/...` short link) as a fallback.
 - WhatsApp: `wa.me/<number>?text=GUIDE` for people who'd rather pay after talking.
