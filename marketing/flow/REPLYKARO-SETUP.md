@@ -73,3 +73,13 @@ status, plus anything you skipped because it needed a paid plan.
 - The free plan has 3 automation slots: 2 used here, 1 left for the next free guide (for example GOOGLE or REPLY).
 - Free plan limit: 1,000 DMs a month. ReplyKaro's paid plans start at ₹99 / $3 a month (their pricing page); ask Jabir
   before any upgrade.
+
+---
+
+## Status 25 Nov 2026 (from Claude in Chrome's report)
+- **LINK** automation is live (trigger: the AI business assistant reel only; keywords LINK/link/Link; public reply
+  "Sent! DM നോക്കൂ 📩…"; Follow-Gate ON; DM with the azmindigital.com/ai-assistant button; greeting off).
+  The last DM ends with "⚡ Sent with ReplyKaro" (free plan).
+- **DEMO and SWING are NOT in this ReplyKaro account** (it has only the LINK automation). `config/comment-dm.yaml`
+  is `mode: "off"` since 6 Nov, so right now nothing answers DEMO or SWING comments. Fix (Jabir's choice): add them
+  here with the prompt above (2 free slots left), or set our own bot back to `mode: "alert"`.
