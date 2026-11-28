@@ -1,7 +1,7 @@
-☀️ AZMIN daily brief · Fri 27 Nov
+☀️ AZMIN daily brief · Sat 28 Nov
 
-📊 Followers 3 (+0) · following 19 (+0) · posts 11 (-1)
-🎬 Latest reel (Fri 06 Nov 22:36): 75 views · reach 65 · avg watch 1.4 s · skip 98.5% · shares 0
+📊 Followers 3 (+0) · following 19 (+0) · posts 1 (-10)
+🎬 Latest reel (Sat 28 Nov 15:34): 5 views · reach 5 · avg watch 3.2 s · skip 100% · shares 0
 
 📅 Today:
 • no post today (stories + engagement only)
@@ -9,8 +9,8 @@
 🔜 Next 3 days:
 • nothing queued yet: ask Claude Code "write the next reel"
 
-💬 Engagement group today: Local businesses (future buyers)
-   fuzecafedubai, guapasalon.dubai, shines_dubai, dreamize_, growith_agency, picazi.ae
+💬 Engagement group today: Property + cars mix
+   sobharealty, drivenproperties, firstsupercarrental, pof.detailing, dreamize_, growith_agency, picazi.ae
 
 ✅ Your to-do (about 25 min):
 1. Chrome → Claude extension → type: azmin-daily (it prepares comments, replies and follows)
